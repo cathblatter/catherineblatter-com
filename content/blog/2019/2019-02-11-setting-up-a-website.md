@@ -1,5 +1,5 @@
 ---
-title: :sunglasses: Setting up a website
+title: Setting up a website
 author: ~
 date: '2019-02-11'
 slug: setting-up-a-webiste

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Catherine Blatter</title>
+    <link>https://competent-brahmagupta-3a0c04.netlify.com/</link>
+    <description>Recent content on Catherine Blatter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://competent-brahmagupta-3a0c04.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting up a website</title>
+      <link>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-webiste/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-webiste/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://competent-brahmagupta-3a0c04.netlify.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://competent-brahmagupta-3a0c04.netlify.com/about/</guid>
+      <description>About Me Hi, my name is Catherine Blatter 👋
+I am a registered general nurse (RN) located in Switzerland - during my master’s studies at the Institute of Nursing Science in Basel I discovered a passion for coding in #rstats.
+ 🏥 my clinical interests lie primarily in adult acute-care surgical nursing, more specifically general and thoracic surgery.
+ 👴 my research interest is health services research - currently mostly with data from nursing homes.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://competent-brahmagupta-3a0c04.netlify.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://competent-brahmagupta-3a0c04.netlify.com/about/</guid>
+      <description>Hi, my name is Catherine Blatter 👋
+I am a registered general nurse (RN) located in Switzerland - during my master’s studies at the Institute of Nursing Science in Basel I discovered a passion for coding in #rstats.
+ 🏥 my clinical interests lie primarily in adult acute-care surgical nursing, more specifically general and thoracic surgery.
+ 👴 my research interest is health services research - currently mostly with data from nursing homes.</description>
+    </item>
+    
+  </channel>
+</rss>
