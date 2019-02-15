@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-webiste/</loc>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-website/</loc>
     <lastmod>2019-02-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -36,6 +36,10 @@
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/tags/development/</loc>
     <lastmod>2019-02-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/project/</loc>
   </url>
   
   <url>

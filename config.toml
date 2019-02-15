@@ -9,7 +9,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "_data/.*"]
 
 
  [permalinks]
-    post = "blog/:year/:month/:day/:slug/"
+   post = "blog/:year/:month/:day/:slug/"
     blog = "blog/:year/:month/:day/:slug/"
     
 [[menu.main]]
@@ -21,10 +21,10 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "_data/.*"]
     name = "About"
     weight = -1
     url = "/about/"
-# [[menu.main]]
-#    name = "Projects"
-#    weight = 2
-#    url = "/project/"
+ [[menu.main]]
+    name = "Projects"
+    weight = 2
+    url = "/project/"
 #[[menu.main]]
 #    name = "Photos"
 #    weight = 4

@@ -1,0 +1,14 @@
+---
+output: github_document
+title: "Projects"
+slug: project
+type: page
+---
+<!-- project.md is generated from project.Rmd. Please edit that file -->
+
+<!-- ![](/images/catherine.png) -->
+
+
+
+- Some of my recent work includes writing the [shurp2018-package](https://cathblatter.github.io/shurp2018)
+
