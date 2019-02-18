@@ -3,21 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-website/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/project/shurp2018/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/about/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://competent-brahmagupta-3a0c04.netlify.com/about/</loc>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/16/useful-hints/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/blog/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -28,23 +30,37 @@
   
   <url>
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://competent-brahmagupta-3a0c04.netlify.com/tags/development/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/tags/endnote/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/categories/hints/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/project/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://competent-brahmagupta-3a0c04.netlify.com/tags/shurp2018/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://competent-brahmagupta-3a0c04.netlify.com/tags/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

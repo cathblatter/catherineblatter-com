@@ -1,20 +1,40 @@
 ---
-output: github_document
-title: "About Me"
+title: "About me"
+author: ~
+date: '2019-02-16'
 slug: about
 type: page
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+menu: []
 ---
-<!-- about.md is generated from about.Rmd. Please edit that file -->
 
-<!-- ![](/images/catherine.png) -->
+My name is Catherine Blatter and I am a registered general nurse (RN) located in Switzerland.  
 
-Hi, my name is Catherine Blatter `r emo::ji("wave")`
+- `r emo::ji("hospital")` My clinical interests and expertise lie primarily in adult acute-care surgical nursing, more specifically general, thoracic and neurosurgery in a tertiary center
 
-I am a registered general nurse (RN) located in Switzerland - during my master's studies at the [Institute of Nursing Science in Basel](https://nursing.unibas.ch) I discovered a passion for coding in #rstats.  
+- `r emo::ji("older_man")` `r emo::ji("older_woman")` I also enjoyed working in a more rural 
+regional hospital with mostly older & chronically ill patients - in particular because (in
+my very own experience) patients and families have been more involved in any
+decision making and "choosing wisely" was very popular.
 
- - `r emo::ji("hospital")` my clinical interests lie primarily in adult acute-care surgical nursing, 
- more specifically general and thoracic surgery.
+During my master's studies and work at the [Institute of Nursing Science in Basel](https://nursing.unibas.ch) I discovered a passion for coding in #rstats. 
  
- - `r emo::ji("older_man")` my research interest is health services research - currently mostly with data from nursing homes.
+ - `r emo::ji("computer")` `r emo::ji("chart_with_upwards_trend")` My research interest lies in quality of care in health services research - especially by the use of data to improve quality of care and the physical and emotional health of health care workers.
+ 
+ 
+ \
+ 
+<!-- **References** -->
+
+<!-- Schwendimann, R., Blatter, C., Dhaini, S., Simon, M., & Ausserhofer, D. (2018). The occurrence,       types, consequences and preventability of in-hospital adverse events – a scoping review. BMC      Health Services Research, 18(1), 521. doi:10.1186/s12913-018-3335-z -->
+
+
+
+ 
+ 
 
 

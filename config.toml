@@ -6,14 +6,14 @@ theme = "hyde"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "_data/.*"]
-
+enableEmoji = true
 
  [permalinks]
-   post = "blog/:year/:month/:day/:slug/"
-    blog = "blog/:year/:month/:day/:slug/"
+   post = "post/:year/:month/:day/:slug/"
+   blog = "blog/:year/:month/:day/:slug/"
     
-[[menu.main]]
-    name = "Blog"
+ [[menu.main]]
+   name = "Posts"
     weight = 1
     identifier = "blog"
     url = "/blog/"
@@ -28,7 +28,7 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "_data/.*"]
 #[[menu.main]]
 #    name = "Photos"
 #    weight = 4
-#    url = "/categories/photos/"
+#    url = "/photos/"
 #[[menu.contact]]
 #   name = "Email"
 #    weight = 3
@@ -52,7 +52,8 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$", "_data/.*"]
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
-    n_projects_front = 5
+ trun_projects_front = 5
+
     
     # hyde
     themeColor = "base16-solarized-cath"

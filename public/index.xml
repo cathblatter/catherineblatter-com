@@ -6,51 +6,43 @@
     <description>Recent content on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://competent-brahmagupta-3a0c04.netlify.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Setting up a website</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-website/</link>
-      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      <title>:bulb: shurp2018</title>
+      <link>https://competent-brahmagupta-3a0c04.netlify.com/project/shurp2018/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/11/setting-up-a-website/</guid>
-      <description></description>
+      <guid>https://competent-brahmagupta-3a0c04.netlify.com/project/shurp2018/</guid>
+      <description>What is it about?
+Some of my recent work includes writing the shurp2018-package.
+This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science. More information is found here: https://shurp.unibas.ch
+more information will follow</description>
     </item>
     
     <item>
-      <title></title>
+      <title>About me</title>
       <link>https://competent-brahmagupta-3a0c04.netlify.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://competent-brahmagupta-3a0c04.netlify.com/about/</guid>
-      <description>About Me Hi, my name is Catherine Blatter 👋
-I am a registered general nurse (RN) located in Switzerland - during my master’s studies at the Institute of Nursing Science in Basel I discovered a passion for coding in #rstats.
- 🏥 my clinical interests lie primarily in adult acute-care surgical nursing, more specifically general and thoracic surgery.
- 👴 my research interest is health services research - currently mostly with data from nursing homes.</description>
+      <description>My name is Catherine Blatter and I am a registered general nurse (RN) located in Switzerland.
+ 🏥 My clinical interests and expertise lie primarily in adult acute-care surgical nursing, more specifically general, thoracic and neurosurgery in a tertiary center
+ 👴 👵 I also enjoyed working in a more rural regional hospital with mostly older &amp;amp; chronically ill patients - in particular because (in my very own experience) patients and families have been more involved in any decision making and “choosing wisely” was very popular.</description>
     </item>
     
     <item>
-      <title>About Me</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Useful hints for Endnote</title>
+      <link>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/16/useful-hints/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/about/</guid>
-      <description>Hi, my name is Catherine Blatter 👋
-I am a registered general nurse (RN) located in Switzerland - during my master’s studies at the Institute of Nursing Science in Basel I discovered a passion for coding in #rstats.
- 🏥 my clinical interests lie primarily in adult acute-care surgical nursing, more specifically general and thoracic surgery.
- 👴 my research interest is health services research - currently mostly with data from nursing homes.</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/project/</guid>
-      <description> Some of my recent work includes writing the shurp2018-package  </description>
+      <guid>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/16/useful-hints/</guid>
+      <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
+Q: Endnote does not find/download articles with full-text search? A: First, have you a installed a functioning licences version of Endnote? Check in your asknet [dot] unibas [dot] ch-account.
+Second, probably you need to install the connection, for instance the Wiley Online Library - instruction are posted here: https://endnote.</description>
     </item>
     
   </channel>

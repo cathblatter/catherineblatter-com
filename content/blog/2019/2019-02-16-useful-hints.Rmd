@@ -1,0 +1,33 @@
+---
+title: Useful hints for Endnote
+author: ~
+date: '2019-02-16'
+slug: useful-hints
+type: blog
+categories: []
+tags: []
+Categories:
+  - hints
+Description: ''
+Tags:
+  - Endnote
+menu: []
+---
+
+## `r emo::ji("bulb")` A collection of hints for working with Endnote
+
+*this is a working document primarily addressed at students from the Institute of*
+*Nursing Science at University of Basel and may change over time - feedback welcome*
+\
+
+#### Q: Endnote does not find/download articles with full-text search?
+
+A: First, have you a installed a functioning licences version of Endnote?
+Check in your asknet [dot] unibas [dot] ch-account.
+
+Second, probably you need to install the connection, for instance the Wiley Online Library - 
+instruction are posted here: https://endnote.com/downloads/connection-files/ 
+
+#### Q: Journal names are not displayed in full (according to APA style)
+
+... (will follow)

@@ -1,0 +1,25 @@
+---
+title: ":bulb: shurp2018"
+author: ~
+date: '2019-02-16'
+slug: shurp2018
+type: page
+categories: ["Project"]
+tags: []
+Categories:
+Description: ''
+Tags:
+  - shurp2018
+menu: []
+---
+
+\
+**What is it about?**
+
+Some of my recent work includes writing the [shurp2018-package](https://cathblatter.github.io/shurp2018). 
+
+This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science. More information is found here: https://shurp.unibas.ch 
+
+
+*more information will follow*
+
