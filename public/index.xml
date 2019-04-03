@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Catherine Blatter</title>
-    <link>https://competent-brahmagupta-3a0c04.netlify.com/</link>
+    <link>https://cathblatter.rbind.io/</link>
     <description>Recent content on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://competent-brahmagupta-3a0c04.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>:bulb: shurp2018</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/project/shurp2018/</link>
+      <link>https://cathblatter.rbind.io/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/project/shurp2018/</guid>
+      <guid>https://cathblatter.rbind.io/project/shurp2018/</guid>
       <description>What is it about?
 Some of my recent work includes writing the shurp2018-package.
 This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science. More information is found here: https://shurp.unibas.ch
@@ -25,20 +25,20 @@ more information will follow</description>
     
     <item>
       <title>Useful hints for Endnote</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/16/useful-hints/</link>
+      <link>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/blog/2019/02/16/useful-hints/</guid>
+      <guid>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</guid>
       <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
 What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers. This document lists the major problems I’ve seen and offers solutions that worked for me.</description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>https://competent-brahmagupta-3a0c04.netlify.com/about/</link>
+      <link>https://cathblatter.rbind.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://competent-brahmagupta-3a0c04.netlify.com/about/</guid>
+      <guid>https://cathblatter.rbind.io/about/</guid>
       <description>My name is Catherine Blatter and I am trained as a registered general nurse (RN) located in Switzerland. I’m currently finishing my Master’s degree and working as a research assistant at the Institute of Nursing Science (INS) at the University of Basel.
  🏥 My clinical interests and expertise lie primarily in adult acute-care surgical nursing, more specifically general, thoracic and neurosurgery in a tertiary center
  👴 👵 I also enjoyed working in a more rural regional hospital with mostly older &amp;amp; chronically ill patients - in particular because “choosing wisely” was very popular and discussed often with patients and family members.</description>
