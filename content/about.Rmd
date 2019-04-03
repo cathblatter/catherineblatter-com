@@ -26,6 +26,8 @@ regional hospital with mostly older & chronically ill patients - in particular b
 - `r emo::ji("chart_with_upwards_trend")` My research interest lies in quality of care in health services research. More precisely how data can be used to improve quality of care and account for the physical and emotional health of health care workers.
  
 
+This website is mantained personally and does not represent my employer's views. It is a result of learning about Git (version control), writing R packages and lots of other useful stuff for R.
+ 
  \
  
 <!-- **References** -->
