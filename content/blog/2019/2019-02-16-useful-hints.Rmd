@@ -19,9 +19,6 @@ menu: []
 *this is a working document primarily addressed at students from the Institute of*
 *Nursing Science at University of Basel and may change over time - feedback welcome*
 
-This post was last updated on `r format(Sys.Date(), "%Y-%m-%d")`
-
-
 ### What is this document and why?
 
 Endnote is the citation manager proclaimed in many courses at the INS. Over the past years 
@@ -57,3 +54,7 @@ Endnote has now imported all styles and once you close and re-open your library,
 
 
 ... (will follow)
+
+
+
+This post was last updated on `r format(Sys.Date(), "%Y-%m-%d")`
