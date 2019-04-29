@@ -3,63 +3,92 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://cathblatter.rbind.io/project/shurp2018/</loc>
+    <loc>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/shurp2018/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</loc>
+    <loc>/blog/2019/02/16/useful-hints/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/about/</loc>
+    <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/blog/</loc>
+    <loc>/blog/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/code/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data-wrangling/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/endnote/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://cathblatter.rbind.io/</loc>
+    <loc>/tags/hint/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/categories/endnote/</loc>
+    <loc>/project/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/tags/hint/</loc>
+    <loc>/categories/research-helpers/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/rismed/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/shurp2018/</loc>
     <lastmod>2019-02-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://cathblatter.rbind.io/project/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://cathblatter.rbind.io/tags/shurp2018/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://cathblatter.rbind.io/tags/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <loc>/tags/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

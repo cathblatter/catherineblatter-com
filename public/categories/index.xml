@@ -2,20 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Catherine Blatter</title>
-    <link>https://cathblatter.rbind.io/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://cathblatter.rbind.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Code</title>
+      <link>/categories/code/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Endnote</title>
-      <link>https://cathblatter.rbind.io/categories/endnote/</link>
+      <link>/categories/endnote/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/categories/endnote/</guid>
+      <guid>/categories/endnote/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research Helpers</title>
+      <link>/categories/research-helpers/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/research-helpers/</guid>
       <description></description>
     </item>
     
