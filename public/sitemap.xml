@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/project/robert/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</loc>
     <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2019/02/16/useful-hints/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,8 +23,9 @@
   </url>
   
   <url>
-    <loc>/blog/2019/02/16/useful-hints/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <loc>/tags/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -34,7 +45,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -63,8 +74,14 @@
   </url>
   
   <url>
+    <loc>/categories/other/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/project/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -88,7 +105,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

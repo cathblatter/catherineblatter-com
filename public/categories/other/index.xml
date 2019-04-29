@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Catherine Blatter</title>
-    <link>/tags/golang/</link>
-    <description>Recent content in Golang on Catherine Blatter</description>
+    <title>Other on Catherine Blatter</title>
+    <link>/categories/other/</link>
+    <description>Recent content in Other on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/other/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>:car: robert</title>
+      <title> :car: Robert :world_map:</title>
       <link>/project/robert/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/robert/</guid>
-      <description></description>
+      <description>My car - Robert - likes travelling and we both like maps 🌍. So a further personal project will be to explore spatial data in R…</description>
     </item>
     
   </channel>

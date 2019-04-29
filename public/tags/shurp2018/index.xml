@@ -12,14 +12,14 @@
     
     
     <item>
-      <title>:bulb: shurp2018</title>
+      <title>shurp2018 - :package:</title>
       <link>/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/shurp2018/</guid>
       <description>What is it about?
 Some of my recent work includes writing the shurp2018-package.
-This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science. More information is found here: https://shurp.unibas.ch
+This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science, more information is found here: https://shurp.unibas.ch
 more information will follow</description>
     </item>
     
