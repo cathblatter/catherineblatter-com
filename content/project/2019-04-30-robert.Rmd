@@ -1,6 +1,6 @@
 ---
 title: " :car: Robert :world_map:"
-author: Catherine Blatter
+author: ~
 date: '2019-04-30'
 slug: robert
 type: page
