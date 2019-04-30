@@ -10,7 +10,7 @@ Categories:
   - Other
 Description: ''
 Tags: ''
-menu: ''
+menu: []
 ---
 
 My car - Robert - likes travelling and we both like maps `r emo::ji("earth_africa")`. 
