@@ -32,7 +32,7 @@ enableEmoji = true
 #[[menu.contact]]
 #   name = "Email"
 #    weight = 3
-#    url = "mailto:catherine.blatter@gmail.com"
+#    url = "mailto:youremailr@gmail.com"
 [[menu.contact]]
     name = "GitHub"
     weight = 2
@@ -52,7 +52,7 @@ enableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
-    trun_projects_front = 5
+    # trunrojects_front = 5
 
     
     # hyde
