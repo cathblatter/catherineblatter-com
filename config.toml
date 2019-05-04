@@ -11,7 +11,7 @@ enableEmoji = true
  [permalinks]
    post = "post/:year/:month/:day/:slug/"
    blog = "blog/:year/:month/:day/:slug/"
-    
+
  [[menu.main]]
    name = "Posts"
     weight = 1
@@ -41,24 +41,23 @@ enableEmoji = true
     name = "Twitter"
     weight = 1
     url = "https://twitter.com/cathblatter"
-    
+
 [author]
     image = "images/catherine.png"
 
-    
+
 [params]
     description = "RN | cand. MSc | #rstats | likes bikes, data & the nordic outdoors 🇳🇴🇸🇪🇮🇸"
     EnableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
-    # trunrojects_front = 5
+    n_projects_front = 5
 
-    
     # hyde
     themeColor = "base16-solarized-cath"
     customCss = ["css/hamburgers.css", "css/custom.css"]
-    
+
     # options for highlight.js (version, additional languages, and theme)
     # import minified languages to /js/highlight.js/{version}/languages
     highlightjsVersion = "9.11.0"
