@@ -52,7 +52,7 @@ enableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
- trun_projects_front = 5
+    trun_projects_front = 5
 
     
     # hyde
