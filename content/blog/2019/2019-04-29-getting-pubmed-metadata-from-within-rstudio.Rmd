@@ -159,12 +159,13 @@ with increasing tendency in publications. This gave me valid data for accepting 
 was not as comprehensive as the full search string used in my thesis)
 
 Due to the nature of my thesis, I (sadly) didn't have to use the exact numbers. Yet, I still 
-learned two other things `r emo::ji("bulb")`:  
+learned two useful things `r emo::ji("bulb")`:  
 
 1) Using bibliographic information to inform your research may be helpful and should 
 not be forgotten.  
 
-2) I felt like I reached a whole new level of R's numerous capabilities.  
+2) I felt like I reached a whole new level of R's numerous capabilities: Using an 
+R package to connect to a web-database should not be the end of my discoveries `r emo::ji("smiley")`
 
 
 *Notes on this post*:  
