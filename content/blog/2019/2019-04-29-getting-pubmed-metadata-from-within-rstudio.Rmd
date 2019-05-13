@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
 ## What is this post about?
 
-- For my master's thesis (blogpost following - stay tuned `r emo::ji("sunglasses")`) I came at 
+- For my master's thesis (stay tuned `r emo::ji("sunglasses")`) I came at 
 a point where I was interested in having a closer look at publication meta data (e.g. publications per year)  
 
 - PubMed usually does provide this service when you execute your search, for some reason it failed
@@ -36,7 +36,7 @@ for my query
 - Being taught basic statistics I was determined to find a way to create
 the image myself... and came across the amazing RISmed-`r emo::ji("package")`
 
-`r emo::ji("right_arrow")` This blog post highlights two cases where I used RISmed 
+`r emo::ji("right_arrow")` This blog post highlights how I used the RISmed package
 and gives short code examples 
 
 
@@ -44,8 +44,8 @@ and gives short code examples
 
 The topic of my master's thesis - *unfinished / missed / rationed nursing care* - is an 
 important topic in health services research with growing numbers of publications over 
-the last years. Altough I did not have to use R extensively during my thesis, in two 
-situations I greatly profited from it: 
+the last years. Altough I did not have to use R extensively during my thesis, in one 
+specific case I greatly profited from it: 
 
 Usually, PubMed provides a small graphical display of the yearly publication
 count on each query as shown in the image below: 
@@ -53,16 +53,18 @@ count on each query as shown in the image below:
 ![PubMed year count](/images/pubmed_yearcount.png)
 
 For some reason it failed for my exact search query. This was especially bad 
-because I had to make a somehow valid statement that the publication numbers were growing. 
-If I only could get all meta data (i.e. years) from my query (~900) into a spreadsheet... 
+because I had to make a somehow valid statement that the publication numbers were 
+increasing over the last years. 
+If I only could get all meta data (i.e. years) from my query (~900) into a spreadsheet...[^1]
 
-At a later stage of my thesis we came across the decision of the target journal for 
-dissemination of the results, so my supervisor said something along the lines of 
-"check out what journals usually publish your topic". Being trained for some years now that 
-all statements should be appropriately referenced (i.e. no "guessing") I thought 
-about analysing meta data (i.e. journal names) of these publications. At some point 
-I realized that the PubMed database should be accessible and I was sure that R has a solution to it -
-that's how I found the [RISmed-package](https://cran.r-project.org/web/packages/RISmed/RISmed.pdf).
+[^1]: Actually, PubMed does provide this service in a user friendly way: Execute your 
+search query, choose the results you want, then go to *Send to* -> *File* and you 
+get a .csv-file.  
+But hey, who does it this way when you can extract it with an
+R package?
+
+At some point I realized that the PubMed database should be accessible and I was sure 
+that R has a solution to it - that's how I found the [RISmed-package](https://cran.r-project.org/web/packages/RISmed/RISmed.pdf).
 
 ## RISmed package
 
@@ -103,7 +105,7 @@ QueryId(search_query)
 ```
 
 If you think your query gets you a reasonable number of results you can then 
-furter information on your records (i.e. dowloading the information): 
+further information on your records (i.e. dowloading the information): 
 
 ```{r}
 # get the actual data from PubMed and store them in an object called records
@@ -147,8 +149,25 @@ ggplot(pubmed_data, aes(x = factor(Year))) +
 
 ```
 
+## How could my thesis profit from the RISmed package? 
 
-*Notes*:  
+The figure I created[^2] helped me visualize meta information on the publications: 
+I could clearly see that the topic *unfinished nursing care* has been mentioned 
+with increasing tendency in publications. This gave me valid data for accepting my assumption.  
+
+[^2]: (not the figure above, as the sample string I used in this post 
+was not as comprehensive as the full search string used in my thesis)
+
+Due to the nature of my thesis, I (sadly) didn't have to use the exact numbers. Yet, I still 
+learned two other things `r emo::ji("bulb")`:  
+
+1) Using bibliographic information to inform your research may be helpful and should 
+not be forgotten.  
+
+2) I felt like I reached a whole new level of R's numerous capabilities.  
+
+
+*Notes on this post*:  
 
 - Be careful with the search query - there can be differences in using different codes, see here: 
 https://stackoverflow.com/questions/32994991/r-package-rismed-different-results-using-the-eutilsget-or-summary-function
