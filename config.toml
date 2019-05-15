@@ -21,10 +21,10 @@ enableEmoji = true
     name = "About"
     weight = -1
     url = "/about/"
- [[menu.main]]
-    name = "Projects"
-    weight = 2
-    url = "/project/"
+#[[menu.main]]
+#   name = "Projects"
+#   weight = 2
+#   url = "/project/"
 #[[menu.main]]
 #    name = "Photos"
 #    weight = 4
@@ -52,10 +52,10 @@ enableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
-    n_projects_front = 5
+ trun_projects_front = 5
 
-    # hyde
-    themeColor = "base16-solarized-cath"
+   5# hyde
+    t hemeColor = "base16-solarized-cath"
     customCss = ["css/hamburgers.css", "css/custom.css"]
 
     # options for highlight.js (version, additional languages, and theme)

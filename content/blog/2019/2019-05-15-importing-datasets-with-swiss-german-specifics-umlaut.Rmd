@@ -1,0 +1,100 @@
+---
+title: 'Importing Datasets with Swiss/German specifics: umlaut'
+author: Catherine Blatter
+date: '2019-05-15'
+slug: importing-datasets-with-swiss-german-specifics-umlaut
+style: page
+categories: []
+tags: []
+Categories:
+  - Data preparation series
+Description: ''
+Tags:
+  - Hints
+menu: ''
+---
+
+This blog post is part of the ongoing collection *Data preparation series*. It collects
+hints for preparation of data by some of the ongoing multi-center projcets at the [Institute of Nursing Science](https://nursing.unibas.ch).
+
+
+# Why is this needed?
+
+- Many ongoing projects at INS are multi-center studies combining both survey- 
+and routinely collected data
+
+- Most of them have data coming from at least two different language 
+ regions (German- and French-speaking, eventually Italian-speaking)
+
+- Importing those datasets in R with the systems default encoding by locale (UTF-8) fails often
+
+`r emo::ji("right_arrow")` This blog post shows code for proper importing of datasets that contain umlaute (ä, ö, ü)  `r emo::ji("left_arrow")` 
+
+
+# How to do it?
+
+The trick is very easy: inside the function that imports the dataset into the global 
+environment you need to change the encoding (from standard UTF-8) by setting your *locale* to **latin1**.
+
+My favourite way to import (middle sized .csv-files) is with the readr-`r emo::ji("package")`:
+
+```{r, eval=FALSE}
+
+# this approach loads the whole readr-package
+library(readr)
+my_data <- read_delim("path/to/my/file/my_data.csv", delim = ";",
+                      locale = locale(encoding = "latin1"))
+
+# this approach does not load readr, but calls read_delim() from the readr-package
+my_data <- readr::read_delim("path/to/my/file/my_data.csv", delim = ";",
+                      locale = locale(encoding = "latin1"))
+
+```
+
+
+`r emo::ji("warning")` with the readr-package the encoding is spelt *latin1*, but sometimes the spelling can differ:
+
+```{r, eval=FALSE}
+
+# attaching the package
+library(data.table)
+my_very_large_data <- fread("path/to/my/verylargefile/my_very_large_data.csv", 
+                            sep = ";", encoding="Latin-1")
+
+# calling the function directly
+my_very_large_data <- data.table::fread("path/to/my/verylargefile/my_very_large_data.csv", 
+                                        sep = ";", encoding="Latin-1")
+
+```
+
+\\
+
+# Alternative way using RStudio's UI
+
+1. Hit *Import Dataset* -> *From Text (readr)*
+
+![](/images/1.png)
+
+2. Choose *configure*, then *encoding* (see, the default is UTF-8)
+
+![](/images/2.png)
+
+3. Hit *other* and a new popup opens
+
+![](/images/3.png)
+
+4. Type "latin1", press *ok* - the popup closes - then choose *configure*
+
+![](/images/4.png)
+
+
+5. RStudios import panel changed the code preview - done :-) 
+
+![](/images/5.png)
+
+`r emo::ji("bulb")` nice feature: if you hit import, the code is displayed 
+in the console and you can copy/paste it into your .R-script. If I dont know the 
+exact code, this is exactly what I do as a workaround!
+
+Did that work out for you? Please contact me if something is not clear!
+
