@@ -52,9 +52,9 @@ enableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
     show_projects_front = true
- trun_projects_front = 5
+ trun_p   ects_front = 5
 
-   5# hyde
+   5# hyd 
     t hemeColor = "base16-solarized-cath"
     customCss = ["css/hamburgers.css", "css/custom.css"]
 
