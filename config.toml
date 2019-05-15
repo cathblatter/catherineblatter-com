@@ -51,11 +51,12 @@ enableEmoji = true
     EnableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
-    show_projects_front = true
- trun_p   ects_front = 5
+    show_projects_front = false
+    n_projects_front = 1
 
-   5# hyd 
-    t hemeColor = "base16-solarized-cath"
+
+    # hyde
+    themeColor = "base16-solarized-cath"
     customCss = ["css/hamburgers.css", "css/custom.css"]
 
     # options for highlight.js (version, additional languages, and theme)
