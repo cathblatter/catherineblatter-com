@@ -2,71 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Catherine Blatter</title>
-    <link>/</link>
+    <link>https://cathblatter.rbind.io/</link>
     <description>Recent content on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Importing Datasets with Swiss/German specifics: umlaut</title>
-      <link>/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</link>
+      <link>https://cathblatter.rbind.io/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</guid>
+      <guid>https://cathblatter.rbind.io/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</guid>
       <description>This blog post is part of the ongoing collection Data preparation series. It collects hints for preparation of data by some of the ongoing multi-center projcets at the Institute of Nursing Science.
 Why is this needed?  Many ongoing projects at INS are multi-center studies combining both survey- and routinely collected data
  Most of them have data coming from at least two different language regions (German- and French-speaking, eventually Italian-speaking)</description>
     </item>
     
     <item>
-      <title> :book: the one-sentence literature review</title>
-      <link>/project/the-non-scientific-literature-review/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/the-non-scientific-literature-review/</guid>
-      <description>Reading classic literature / fiction is one of my all time favourite activities. My apartement is filled with books (yes - the old-fashioned printed book 📖) and I treasure the moments when I can sit somewhere quiet and just enjoy reading.
-This post contains an incomplete list of books I’ve read. Some were better than others, some are very famous, some are funny and some are sad but all of them accompanied me at some point in my life.</description>
-    </item>
-    
-    <item>
       <title> :car: Robert :world_map:</title>
-      <link>/project/robert/</link>
+      <link>https://cathblatter.rbind.io/project/robert/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/robert/</guid>
+      <guid>https://cathblatter.rbind.io/project/robert/</guid>
       <description>My car - Robert - likes travelling and we both like maps 🌍. A further personal project will be to explore spatial data in R…</description>
     </item>
     
     <item>
       <title>Getting PubMed metadata with RISmed directly into RStudio</title>
-      <link>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</link>
+      <link>https://cathblatter.rbind.io/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</guid>
+      <guid>https://cathblatter.rbind.io/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</guid>
       <description>What is this post about? Introduction - what were the problems I faced? RISmed package How to use RISmed?  How could my thesis profit from the RISmed package?   What is this post about?  For my master’s thesis (stay tuned 😎) I came at a point where I was interested in having a closer look at publication meta data (e.g. publications per year)
  PubMed usually does provide this service when you execute your search, for some reason it failed for my query</description>
     </item>
     
     <item>
       <title>Useful hints for Endnote</title>
-      <link>/blog/2019/02/16/useful-hints/</link>
+      <link>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2019/02/16/useful-hints/</guid>
+      <guid>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</guid>
       <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
 What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers. This document lists the major problems I’ve seen and offers solutions that worked for me.</description>
     </item>
     
     <item>
       <title>shurp2018 - :package:</title>
-      <link>/project/shurp2018/</link>
+      <link>https://cathblatter.rbind.io/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/shurp2018/</guid>
+      <guid>https://cathblatter.rbind.io/project/shurp2018/</guid>
       <description>What is it about?
 Some of my recent work includes writing the shurp2018-package.
 This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science, more information is found here: https://shurp.unibas.ch
@@ -75,10 +65,10 @@ more information will follow</description>
     
     <item>
       <title>About me</title>
-      <link>/about/</link>
+      <link>https://cathblatter.rbind.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://cathblatter.rbind.io/about/</guid>
       <description>My name is Catherine Blatter and I am trained as a registered general nurse (RN) located in Switzerland. I’m currently finishing my Master’s degree and working as a research assistant at the Institute of Nursing Science (INS) at the University of Basel.
  💻 📈 My research interest lies in quality of care in health services research. More precisely how data can be used to improve quality of care and account for the physical and emotional health of health care workers.</description>
     </item>
