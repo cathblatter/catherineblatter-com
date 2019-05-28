@@ -15,15 +15,15 @@ My name is Catherine Blatter and I am trained as a registered general nurse (RN)
 I'm currently finishing my Master's degree and working as a research assistant at the [Institute of 
 Nursing Science](https://nursing.unibas.ch) (INS) at the University of Basel.  
 
-- `r emo::ji("computer")` `r emo::ji("chart_with_upwards_trend")` My research interest lies in quality of care in health services research. More precisely how data can be used to improve quality of care and account for the physical and emotional health of health care workers.
+<!-- - `r emo::ji("computer")` `r emo::ji("chart_with_upwards_trend")` My research interest lies in quality of care in health services research. More precisely how data can be used to improve quality of care and account for the physical and emotional health of health care workers. -->
 
-- `r emo::ji("hospital")` My clinical interests and expertise lie primarily in adult acute-care surgical nursing, more specifically general, thoracic and neurosurgery in a tertiary center
+<!-- - `r emo::ji("hospital")` My clinical interests and expertise lie primarily in adult acute-care surgical nursing, more specifically general, thoracic and neurosurgery in a tertiary center -->
 
-- `r emo::ji("older_man")` `r emo::ji("older_woman")` I also enjoyed working in a more rural 
-regional hospital with mostly older & chronically ill patients - in particular because "choosing wisely" was very popular and discussed often with patients and family members.
+<!-- - `r emo::ji("older_man")` `r emo::ji("older_woman")` I also enjoyed working in a more rural  -->
+<!-- regional hospital with mostly older & chronically ill patients - in particular because "choosing wisely" was very popular and discussed often with patients and family members. -->
 
 
-This website is mantained personally and does not represent my employer's views. It is a result of learning about Git (version control), writing R packages and lots of other useful stuff for R.
+This website is mantained personally and does not represent my employer's views. It is a result of learning about Git (version control), writing R packages and lots of other useful stuff for R.  
  
  \ 
  
