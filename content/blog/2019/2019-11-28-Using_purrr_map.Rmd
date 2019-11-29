@@ -1,0 +1,144 @@
+---
+title: 'Using purrr::map() to identify data'
+author: Catherine Blatter
+date: '2019-11-28'
+slug: using-purrr::map()-to-identify-data
+style: page
+categories: []
+tags: []
+Categories:
+  - Data preparation
+Description: ''
+Tags:
+  - Hints
+menu: ''
+---
+
+
+# What happened? 
+
+Recently I wanted to explore plotting R for the first time and discovered the 
+[ggswissmaps-package](https://cran.r-project.org/web/packages/ggswissmaps/ggswissmaps.pdf).
+
+I'm new to the structure of geospatial data so I read the introductory vignette and followed the examples. 
+
+```{r}
+#install.packages("ggswissmaps")
+
+suppressPackageStartupMessages(library(ggswissmaps))
+suppressPackageStartupMessages(library(tidyverse))
+
+# Data frame with the coordinates of all swiss districts
+d <- shp_df[["g1b15"]]
+
+# Look at the structure of the data frame
+glimpse(d)
+
+# The cantons are identified by the KTNR column
+# Extract from this data the districts of two cantons (18 = Graubünden, 21 = Ticino)
+
+two_cantons <- d %>% filter(KTNR  %in%  c(18, 21))
+
+# And draw the map
+maps2_(two_cantons)
+```
+
+
+This worked quite fine - but I was more interested in plotting by language region, so I did 
+the following: 
+
+```{r}
+# add an aditional variable "region"
+d %>% 
+  mutate(region = case_when(KTNR == 21 ~ "Ticino",
+                                 KTNR  %in% c(22, 23, 24, 25, 26) ~ "Romandie",
+                                 TRUE ~ "Deutschschweiz")) -> d
+
+# draw a ggplot 
+ggplot(d, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region)), color = "black") +
+  scale_fill_manual(name = "Region",
+                   values = c("Ticino" = "grey90",
+                              "Romandie" = "#b2df8a",
+                              "Deutschschweiz" = "#a6cee3")) +
+  theme_void()
+```
+
+What is the problem with this plot (aside from the ugly black color of the boundaries)? The boundaries correspond to district, not cantonal level (what I wanted). As the variable `KTNR` identifies the cantons, I did the following: 
+
+```{r}
+# draw a ggplot and changed to aes(....group = KTNR)
+ggplot(d, aes(x = long, y = lat, group = KTNR)) +
+  geom_polygon(aes(fill = factor(region)), color = "black") +
+  scale_fill_manual(name = "Region",
+                   values = c("Ticino" = "grey90",
+                              "Romandie" = "#b2df8a",
+                              "Deutschschweiz" = "#a6cee3")) +
+  theme_void()
+```
+
+...It got even worse...cc
+
+I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! `r emo::ji("sunglasses")`), I realized that my problem is with the data: `aes(x = long, y = lat)` in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn't work either, so what to do else?  
+
+Look at the data structure:
+
+```{r}
+# a list containing 8 elements (dataframes)
+# which each contain lon/lat on different levels
+class(shp_df)
+
+# very long output, not shown here
+#str(shp_df)
+```
+
+I now knew that I could use the plot from above and check each element of the list - 
+either by hand (7x copy/paste) or with `purrr::map()`!
+
+```{r}
+
+# create a function to map over each element of the list to
+# identify if one is on cantonal-level
+my_plot <- function(data){
+  
+  ggplot2::ggplot(data = data, ggplot2::aes(x = long, y = lat, group = group)) +
+    ggplot2::geom_polygon() +
+    ggplot2::theme_void()
+  
+}
+```
+
+
+Then do the magic (1 simple line of code will give me 8 plots!): 
+
+```{r}
+# map it over the list
+purrr::map(ggswissmaps::shp_df, ~my_plot(.x))
+```
+
+
+From the plots above I now know which dataframe to use: 
+
+```{r}
+# solution: the second last element of the list is what I need
+cant_level <- 
+  ggswissmaps::shp_df$g1k15 %>% 
+      mutate(region = case_when(KTNR == 21 ~ "Ticino",
+                                KTNR  %in% c(22, 23, 24, 25, 26) ~ "Romandie",
+                                TRUE ~ "Deutschschweiz"))
+
+# draw the prettier graph
+ggplot(cant_level, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region))) +
+  scale_fill_manual(name = "Region",
+                   values = c("Ticino" = "grey90",
+                              "Romandie" = "#b2df8a",
+                              "Deutschschweiz" = "#a6cee3")) +
+  theme_void()
+
+```
+
+
+
+The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here...  
+

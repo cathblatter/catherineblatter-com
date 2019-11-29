@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Catherine Blatter</title>
@@ -6,22 +6,22 @@
     <description>Recent content in Tags on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>/tags/</link>
-      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      <title>Hints</title>
+      <link>/tags/hints/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/</guid>
+      <guid>/tags/hints/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Data Wrangling</title>
+      <title>Data wrangling</title>
       <link>/tags/data-wrangling/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -30,25 +30,7 @@
     </item>
     
     <item>
-      <title>Hint</title>
-      <link>/tags/hint/</link>
-      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/hint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hints</title>
-      <link>/tags/hints/</link>
-      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/hints/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rismed</title>
+      <title>RISmed</title>
       <link>/tags/rismed/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -57,7 +39,16 @@
     </item>
     
     <item>
-      <title>Shurp2018</title>
+      <title>hint</title>
+      <link>/tags/hint/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/hint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shurp2018</title>
       <link>/tags/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       

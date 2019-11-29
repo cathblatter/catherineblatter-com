@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Catherine Blatter</title>
@@ -6,44 +6,26 @@
     <description>Recent content in Categories on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>/categories/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
+      <title>Data preparation</title>
+      <link>/categories/data-preparation/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/</guid>
+      <guid>/categories/data-preparation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Code</title>
-      <link>/categories/code/</link>
-      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Preparation Series</title>
+      <title>Data preparation series</title>
       <link>/categories/data-preparation-series/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/data-preparation-series/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Endnote</title>
-      <link>/categories/endnote/</link>
-      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/endnote/</guid>
       <description></description>
     </item>
     
@@ -57,11 +39,29 @@
     </item>
     
     <item>
-      <title>Research Helpers</title>
+      <title>Code</title>
+      <link>/categories/code/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research helpers</title>
       <link>/categories/research-helpers/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/research-helpers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Endnote</title>
+      <link>/categories/endnote/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/endnote/</guid>
       <description></description>
     </item>
     

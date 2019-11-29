@@ -1,0 +1,156 @@
+---
+title: 'Using purrr::map() to identify data'
+author: Catherine Blatter
+date: '2019-11-28'
+slug: using-purrr::map()-to-identify-data
+style: page
+categories: []
+tags: []
+Categories:
+  - Data preparation
+Description: ''
+Tags:
+  - Hints
+menu: ''
+---
+
+
+
+<div id="what-happened" class="section level1">
+<h1>What happened?</h1>
+<p>Recently I wanted to explore plotting R for the first time and discovered the
+<a href="https://cran.r-project.org/web/packages/ggswissmaps/ggswissmaps.pdf">ggswissmaps-package</a>.</p>
+<p>I’m new to the structure of geospatial data so I read the introductory vignette and followed the examples.</p>
+<pre class="r"><code>#install.packages(&quot;ggswissmaps&quot;)
+
+suppressPackageStartupMessages(library(ggswissmaps))
+suppressPackageStartupMessages(library(tidyverse))
+
+# Data frame with the coordinates of all swiss districts
+d &lt;- shp_df[[&quot;g1b15&quot;]]
+
+# Look at the structure of the data frame
+glimpse(d)</code></pre>
+<pre><code>## Observations: 19,502
+## Variables: 21
+## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102…
+## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030…
+## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+## $ hole    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+## $ piece   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ group   &lt;fct&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0…
+## $ id      &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;…
+## $ BZNR    &lt;int&gt; 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
+## $ KTNR    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ GRNR    &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
+## $ AREA_HA &lt;int&gt; 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303…
+## $ X_MIN   &lt;int&gt; 671862, 671862, 671862, 671862, 671862, 671862, 671862, 67186…
+## $ X_MAX   &lt;int&gt; 686462, 686462, 686462, 686462, 686462, 686462, 686462, 68646…
+## $ Y_MIN   &lt;int&gt; 229137, 229137, 229137, 229137, 229137, 229137, 229137, 22913…
+## $ Y_MAX   &lt;int&gt; 245396, 245396, 245396, 245396, 245396, 245396, 245396, 24539…
+## $ X_CNTR  &lt;int&gt; 678300, 678300, 678300, 678300, 678300, 678300, 678300, 67830…
+## $ Y_CNTR  &lt;int&gt; 235900, 235900, 235900, 235900, 235900, 235900, 235900, 23590…
+## $ Z_MIN   &lt;int&gt; 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 3…
+## $ Z_MAX   &lt;int&gt; 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 9…
+## $ Z_AVG   &lt;int&gt; 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 5…
+## $ Z_MED   &lt;int&gt; 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 5…</code></pre>
+<pre class="r"><code># The cantons are identified by the KTNR column
+# Extract from this data the districts of two cantons (18 = Graubünden, 21 = Ticino)
+
+two_cantons &lt;- d %&gt;% filter(KTNR  %in%  c(18, 21))
+
+# And draw the map
+maps2_(two_cantons)</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>This worked quite fine - but I was more interested in plotting by language region, so I did
+the following:</p>
+<pre class="r"><code># add an aditional variable &quot;region&quot;
+d %&gt;% 
+  mutate(region = case_when(KTNR == 21 ~ &quot;Ticino&quot;,
+                                 KTNR  %in% c(22, 23, 24, 25, 26) ~ &quot;Romandie&quot;,
+                                 TRUE ~ &quot;Deutschschweiz&quot;)) -&gt; d
+
+# draw a ggplot 
+ggplot(d, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region)), color = &quot;black&quot;) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>What is the problem with this plot (aside from the ugly black color of the boundaries)? The boundaries correspond to district, not cantonal level (what I wanted). As the variable <code>KTNR</code> identifies the cantons, I did the following:</p>
+<pre class="r"><code># draw a ggplot and changed to aes(....group = KTNR)
+ggplot(d, aes(x = long, y = lat, group = KTNR)) +
+  geom_polygon(aes(fill = factor(region)), color = &quot;black&quot;) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>…It got even worse…cc</p>
+<p>I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! 😎), I realized that my problem is with the data: <code>aes(x = long, y = lat)</code> in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn’t work either, so what to do else?</p>
+<p>Look at the data structure:</p>
+<pre class="r"><code># a list containing 8 elements (dataframes)
+# which each contain lon/lat on different levels
+class(shp_df)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code># very long output, not shown here
+#str(shp_df)</code></pre>
+<p>I now knew that I could use the plot from above and check each element of the list -
+either by hand (7x copy/paste) or with <code>purrr::map()</code>!</p>
+<pre class="r"><code># create a function to map over each element of the list to
+# identify if one is on cantonal-level
+my_plot &lt;- function(data){
+  
+  ggplot2::ggplot(data = data, ggplot2::aes(x = long, y = lat, group = group)) +
+    ggplot2::geom_polygon() +
+    ggplot2::theme_void()
+  
+}</code></pre>
+<p>Then do the magic (1 simple line of code will give me 8 plots!):</p>
+<pre class="r"><code># map it over the list
+purrr::map(ggswissmaps::shp_df, ~my_plot(.x))</code></pre>
+<pre><code>## $g1b15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## 
+## $g1g15_encl</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre><code>## 
+## $g1g15_li</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<pre><code>## 
+## $g1g15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<pre><code>## 
+## $g1k15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-5.png" width="672" /></p>
+<pre><code>## 
+## $g1l15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-6.png" width="672" /></p>
+<pre><code>## 
+## $g1r15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-7.png" width="672" /></p>
+<pre><code>## 
+## $g1s15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-8.png" width="672" /></p>
+<p>From the plots above I now know which dataframe to use:</p>
+<pre class="r"><code># solution: the second last element of the list is what I need
+cant_level &lt;- 
+  ggswissmaps::shp_df$g1k15 %&gt;% 
+      mutate(region = case_when(KTNR == 21 ~ &quot;Ticino&quot;,
+                                KTNR  %in% c(22, 23, 24, 25, 26) ~ &quot;Romandie&quot;,
+                                TRUE ~ &quot;Deutschschweiz&quot;))
+
+# draw the prettier graph
+ggplot(cant_level, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region))) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here…</p>
+</div>

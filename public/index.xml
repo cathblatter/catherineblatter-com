@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Catherine Blatter</title>
@@ -6,10 +6,21 @@
     <description>Recent content on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using purrr::map() to identify data</title>
+      <link>/blog/2019/11/28/using-purrrmap-to-identify-data/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2019/11/28/using-purrrmap-to-identify-data/</guid>
+      <description>What happened? Recently I wanted to explore plotting R for the first time and discovered the ggswissmaps-package.
+I’m new to the structure of geospatial data so I read the introductory vignette and followed the examples.
+#install.packages(&amp;quot;ggswissmaps&amp;quot;) suppressPackageStartupMessages(library(ggswissmaps)) suppressPackageStartupMessages(library(tidyverse)) # Data frame with the coordinates of all swiss districts d &amp;lt;- shp_df[[&amp;quot;g1b15&amp;quot;]] # Look at the structure of the data frame glimpse(d) ## Observations: 19,502 ## Variables: 21 ## $ long &amp;lt;int&amp;gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102… ## $ lat &amp;lt;int&amp;gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030… ## $ order &amp;lt;int&amp;gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18… ## $ hole &amp;lt;lgl&amp;gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE… ## $ piece &amp;lt;fct&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1… ## $ group &amp;lt;fct&amp;gt; 0.</description>
+    </item>
     
     <item>
       <title>Importing Datasets with Swiss/German specifics: umlaut</title>
@@ -52,16 +63,6 @@ This post contains an incomplete list of books I’ve read. Some were better tha
     </item>
     
     <item>
-      <title>Useful hints for Endnote</title>
-      <link>/blog/2019/02/16/useful-hints/</link>
-      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2019/02/16/useful-hints/</guid>
-      <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
-What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers. This document lists the major problems I’ve seen and offers solutions that worked for me.</description>
-    </item>
-    
-    <item>
       <title>shurp2018 - :package:</title>
       <link>/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
@@ -71,6 +72,16 @@ What is this document and why? Endnote is the citation manager proclaimed in man
 Some of my recent work includes writing the shurp2018-package.
 This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science, more information is found here: https://shurp.unibas.ch
 more information will follow</description>
+    </item>
+    
+    <item>
+      <title>Useful hints for Endnote</title>
+      <link>/blog/2019/02/16/useful-hints/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2019/02/16/useful-hints/</guid>
+      <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
+What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers. This document lists the major problems I’ve seen and offers solutions that worked for me.</description>
     </item>
     
     <item>
