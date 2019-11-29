@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Catherine Blatter</title>
-    <link>https://cathblatter.rbind.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cathblatter.rbind.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://cathblatter.rbind.io/tags/</link>
+      <link>/tags/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/</guid>
+      <guid>/tags/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Wrangling</title>
-      <link>https://cathblatter.rbind.io/tags/data-wrangling/</link>
+      <link>/tags/data-wrangling/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/data-wrangling/</guid>
+      <guid>/tags/data-wrangling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hint</title>
-      <link>https://cathblatter.rbind.io/tags/hint/</link>
+      <link>/tags/hint/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/hint/</guid>
+      <guid>/tags/hint/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hints</title>
-      <link>https://cathblatter.rbind.io/tags/hints/</link>
+      <link>/tags/hints/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/hints/</guid>
+      <guid>/tags/hints/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rismed</title>
-      <link>https://cathblatter.rbind.io/tags/rismed/</link>
+      <link>/tags/rismed/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/rismed/</guid>
+      <guid>/tags/rismed/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shurp2018</title>
-      <link>https://cathblatter.rbind.io/tags/shurp2018/</link>
+      <link>/tags/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/tags/shurp2018/</guid>
+      <guid>/tags/shurp2018/</guid>
       <description></description>
     </item>
     
