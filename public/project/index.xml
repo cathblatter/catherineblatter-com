@@ -1,41 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Catherine Blatter</title>
-    <link>/project/</link>
+    <link>https://cathblatter.rbind.io/project/</link>
     <description>Recent content in Projects on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/project/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title> :book: the one-sentence literature review</title>
-      <link>/project/the-non-scientific-literature-review/</link>
-      <pubDate>Sat, 04 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/the-non-scientific-literature-review/</guid>
-      <description>Reading classic literature / fiction is one of my all time favourite activities. My apartement is filled with books (yes - the old-fashioned printed book 📖) and I treasure the moments when I can sit somewhere quiet and just enjoy reading.
-This post contains an incomplete list of books I’ve read. Some were better than others, some are very famous, some are funny and some are sad but all of them accompanied me at some point in my life.</description>
-    </item>
     
     <item>
       <title> :car: Robert :world_map:</title>
-      <link>/project/robert/</link>
+      <link>https://cathblatter.rbind.io/project/robert/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/robert/</guid>
+      <guid>https://cathblatter.rbind.io/project/robert/</guid>
       <description>My car - Robert - likes travelling and we both like maps 🌍. A further personal project will be to explore spatial data in R…</description>
     </item>
     
     <item>
       <title>shurp2018 - :package:</title>
-      <link>/project/shurp2018/</link>
+      <link>https://cathblatter.rbind.io/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/shurp2018/</guid>
+      <guid>https://cathblatter.rbind.io/project/shurp2018/</guid>
       <description>What is it about?
 Some of my recent work includes writing the shurp2018-package.
 This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science, more information is found here: https://shurp.unibas.ch
