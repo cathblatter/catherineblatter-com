@@ -13,7 +13,7 @@ Tags:
   - Hints
 menu: ''
 ---
-
+ *last edited: `r lubridate::today()`*
 
 # What happened? 
 
@@ -64,7 +64,8 @@ ggplot(d, aes(x = long, y = lat, group = group)) +
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
   theme_void() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  coord_equal()
 ```
 
 
@@ -81,12 +82,14 @@ ggplot(d, aes(x = long, y = lat, group = KTNR)) +
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
   theme_void() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  coord_equal()
 ```
 
 ...It got even worse...  
 
-I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! `r emo::ji("sunglasses")`), I realized that my problem is with the data: `aes(x = long, y = lat)` in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn't work either, so what to do else?  
+I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! `r emo::ji("sunglasses")`), I realized that my problem is with the data: `aes(x = long, y = lat)` in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn't work either^[In the meantime, the package maintainer provided me with the working links:
+https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html.], so what to do else?  
 
 Look at the data structure:
 
@@ -112,7 +115,8 @@ my_plot <- function(data){
   
   ggplot2::ggplot(data = data, ggplot2::aes(x = long, y = lat, group = group)) +
     ggplot2::geom_polygon() +
-    ggplot2::theme_void()
+    ggplot2::theme_void() +
+    coord_equal()
   
 }
 ```
@@ -143,27 +147,31 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
   theme_void() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  coord_equal()
 
 ```
 
-Edit: 
+The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here...  
+
+*Edit:*  
+
 thanks to the `ggswissmaps`-maintainer [gibo's](https://github.com/gibonet) help, the maps look now much prettier:
 
 ```{r}
 ggplot(cant_level, aes(x = long, y = lat, group = group)) +
-  geom_polygon(aes(fill = factor(region)), color = "white", size = 0.2) +
+  geom_polygon(aes(fill = factor(region)), color = "white", size = 0.1) +
   scale_fill_manual(name = "Region",
                     values = c("Ticino" = "grey90",
                                "Romandie" = "#b2df8a",
                                "Deutschschweiz" = "#a6cee3")) +
   theme_void() +
   theme(legend.position = "bottom") +
-  coord_equal() +
+  coord_equal() + # add a layer for the lakes
   geom_polygon(aes(x = long, y = lat, group = group), 
-               data = shp_df[["g1s15"]], fill = "blue", color = NA)
+               data = shp_df[["g1s15"]], fill = NA, alpha = .5, color = "#0529B3", size = .1, lty = "solid")
 ```
 
 
-The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here...  
+
 
