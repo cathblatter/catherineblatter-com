@@ -22,6 +22,8 @@ Recently I wanted to explore plotting R for the first time and discovered the
 
 I'm new to the structure of geospatial data so I read the introductory vignette and followed the examples. 
 
+### Examples from the ggswissmaps-package
+
 ```{r}
 #install.packages("ggswissmaps")
 
@@ -61,8 +63,12 @@ ggplot(d, aes(x = long, y = lat, group = group)) +
                    values = c("Ticino" = "grey90",
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
-  theme_void()
+  theme_void() +
+  theme(legend.position = "bottom")
 ```
+
+
+### Troubleshooting
 
 What is the problem with this plot (aside from the ugly black color of the boundaries)? The boundaries correspond to district, not cantonal level (what I wanted). As the variable `KTNR` identifies the cantons, I did the following: 
 
@@ -74,10 +80,11 @@ ggplot(d, aes(x = long, y = lat, group = KTNR)) +
                    values = c("Ticino" = "grey90",
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
-  theme_void()
+  theme_void() +
+  theme(legend.position = "bottom")
 ```
 
-...It got even worse...cc
+...It got even worse...  
 
 I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! `r emo::ji("sunglasses")`), I realized that my problem is with the data: `aes(x = long, y = lat)` in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn't work either, so what to do else?  
 
@@ -93,7 +100,9 @@ class(shp_df)
 ```
 
 I now knew that I could use the plot from above and check each element of the list - 
-either by hand (7x copy/paste) or with `purrr::map()`!
+either by hand (corresponding to seven times copy/paste) or with `purrr::map()`!
+
+### Solution
 
 ```{r}
 
@@ -107,7 +116,6 @@ my_plot <- function(data){
   
 }
 ```
-
 
 Then do the magic (1 simple line of code will give me 8 plots!): 
 
@@ -134,7 +142,8 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
                    values = c("Ticino" = "grey90",
                               "Romandie" = "#b2df8a",
                               "Deutschschweiz" = "#a6cee3")) +
-  theme_void()
+  theme_void() +
+  theme(legend.position = "bottom")
 
 ```
 

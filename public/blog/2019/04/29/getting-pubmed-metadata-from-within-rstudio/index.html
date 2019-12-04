@@ -74,9 +74,7 @@
 					
 				</header>
 				<main class="post-content e-content">
-					
-
-<div id="TOC">
+					<div id="TOC">
 <ul>
 <li><a href="#what-is-this-post-about">What is this post about?</a></li>
 <li><a href="#introduction---what-were-the-problems-i-faced">Introduction - what were the problems I faced?</a></li>
@@ -143,20 +141,20 @@ summary(search_query)</code></pre>
 <pre><code>## Query:
 ## missed care[TI] OR implicit rationing[TI] OR unfinished care[TI] AND 1980[EDAT] : 2019[EDAT] 
 ## 
-## Result count:  62</code></pre>
+## Result count:  63</code></pre>
 <pre class="r"><code># see the PMIIDs of our returned query
 QueryId(search_query)</code></pre>
-<pre><code>##  [1] &quot;31680364&quot; &quot;31596988&quot; &quot;31583822&quot; &quot;31529752&quot; &quot;31334567&quot; &quot;31305955&quot;
-##  [7] &quot;30937945&quot; &quot;30866129&quot; &quot;30686577&quot; &quot;30681485&quot; &quot;30589706&quot; &quot;30475323&quot;
-## [13] &quot;30303195&quot; &quot;30303194&quot; &quot;30303193&quot; &quot;30145041&quot; &quot;30095046&quot; &quot;29791753&quot;
-## [19] &quot;29677025&quot; &quot;29569380&quot; &quot;29554590&quot; &quot;29471742&quot; &quot;29281908&quot; &quot;28978300&quot;
-## [25] &quot;28971888&quot; &quot;28960457&quot; &quot;28844649&quot; &quot;28599196&quot; &quot;27556651&quot; &quot;27492884&quot;
-## [31] &quot;27322941&quot; &quot;27292861&quot; &quot;27234155&quot; &quot;29718634&quot; &quot;26947419&quot; &quot;26259338&quot;
-## [37] &quot;26032730&quot; &quot;25794946&quot; &quot;25563066&quot; &quot;25430513&quot; &quot;24681453&quot; &quot;24681452&quot;
-## [43] &quot;24481345&quot; &quot;24397252&quot; &quot;24248553&quot; &quot;23991529&quot; &quot;23334645&quot; &quot;23084600&quot;
-## [49] &quot;22674763&quot; &quot;20661063&quot; &quot;19590471&quot; &quot;18055900&quot; &quot;16323493&quot; &quot;11467274&quot;
-## [55] &quot;10862990&quot; &quot;9694173&quot;  &quot;10173241&quot; &quot;8611380&quot;  &quot;7549650&quot;  &quot;7549649&quot; 
-## [61] &quot;7795458&quot;  &quot;8332926&quot;</code></pre>
+<pre><code>##  [1] &quot;31773131&quot; &quot;31680364&quot; &quot;31596988&quot; &quot;31583822&quot; &quot;31529752&quot; &quot;31334567&quot;
+##  [7] &quot;31305955&quot; &quot;30937945&quot; &quot;30866129&quot; &quot;30686577&quot; &quot;30681485&quot; &quot;30589706&quot;
+## [13] &quot;30475323&quot; &quot;30303195&quot; &quot;30303194&quot; &quot;30303193&quot; &quot;30145041&quot; &quot;30095046&quot;
+## [19] &quot;29791753&quot; &quot;29677025&quot; &quot;29569380&quot; &quot;29554590&quot; &quot;29471742&quot; &quot;29281908&quot;
+## [25] &quot;28978300&quot; &quot;28971888&quot; &quot;28960457&quot; &quot;28844649&quot; &quot;28599196&quot; &quot;27556651&quot;
+## [31] &quot;27492884&quot; &quot;27322941&quot; &quot;27292861&quot; &quot;27234155&quot; &quot;29718634&quot; &quot;26947419&quot;
+## [37] &quot;26259338&quot; &quot;26032730&quot; &quot;25794946&quot; &quot;25563066&quot; &quot;25430513&quot; &quot;24681453&quot;
+## [43] &quot;24681452&quot; &quot;24481345&quot; &quot;24397252&quot; &quot;24248553&quot; &quot;23991529&quot; &quot;23334645&quot;
+## [49] &quot;23084600&quot; &quot;22674763&quot; &quot;20661063&quot; &quot;19590471&quot; &quot;18055900&quot; &quot;16323493&quot;
+## [55] &quot;11467274&quot; &quot;10862990&quot; &quot;9694173&quot;  &quot;10173241&quot; &quot;8611380&quot;  &quot;7549650&quot; 
+## [61] &quot;7549649&quot;  &quot;7795458&quot;  &quot;8332926&quot;</code></pre>
 <p>If you think your query gets you a reasonable number of results you can then
 further information on your records (i.e. dowloading the information):</p>
 <pre class="r"><code># get the actual data from PubMed and store them in an object called records

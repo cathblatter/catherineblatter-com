@@ -74,14 +74,13 @@
 					
 				</header>
 				<main class="post-content e-content">
-					
-
-
-<div id="what-happened" class="section level1">
+					<div id="what-happened" class="section level1">
 <h1>What happened?</h1>
 <p>Recently I wanted to explore plotting R for the first time and discovered the
 <a href="https://cran.r-project.org/web/packages/ggswissmaps/ggswissmaps.pdf">ggswissmaps-package</a>.</p>
 <p>I’m new to the structure of geospatial data so I read the introductory vignette and followed the examples.</p>
+<div id="examples-from-the-ggswissmaps-package" class="section level3">
+<h3>Examples from the ggswissmaps-package</h3>
 <pre class="r"><code>#install.packages(&quot;ggswissmaps&quot;)
 
 suppressPackageStartupMessages(library(ggswissmaps))
@@ -94,27 +93,27 @@ d &lt;- shp_df[[&quot;g1b15&quot;]]
 glimpse(d)</code></pre>
 <pre><code>## Observations: 19,502
 ## Variables: 21
-## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102…
-## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030…
-## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
-## $ hole    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-## $ piece   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-## $ group   &lt;fct&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0…
-## $ id      &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;…
-## $ BZNR    &lt;int&gt; 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
-## $ KTNR    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-## $ GRNR    &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
-## $ AREA_HA &lt;int&gt; 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303…
-## $ X_MIN   &lt;int&gt; 671862, 671862, 671862, 671862, 671862, 671862, 671862, 67186…
-## $ X_MAX   &lt;int&gt; 686462, 686462, 686462, 686462, 686462, 686462, 686462, 68646…
-## $ Y_MIN   &lt;int&gt; 229137, 229137, 229137, 229137, 229137, 229137, 229137, 22913…
-## $ Y_MAX   &lt;int&gt; 245396, 245396, 245396, 245396, 245396, 245396, 245396, 24539…
-## $ X_CNTR  &lt;int&gt; 678300, 678300, 678300, 678300, 678300, 678300, 678300, 67830…
-## $ Y_CNTR  &lt;int&gt; 235900, 235900, 235900, 235900, 235900, 235900, 235900, 23590…
-## $ Z_MIN   &lt;int&gt; 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 3…
-## $ Z_MAX   &lt;int&gt; 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 9…
-## $ Z_AVG   &lt;int&gt; 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 5…
-## $ Z_MED   &lt;int&gt; 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 5…</code></pre>
+## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, …
+## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, …
+## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+## $ hole    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+## $ piece   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ group   &lt;fct&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0…
+## $ id      &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;…
+## $ BZNR    &lt;int&gt; 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
+## $ KTNR    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ GRNR    &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,…
+## $ AREA_HA &lt;int&gt; 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303, …
+## $ X_MIN   &lt;int&gt; 671862, 671862, 671862, 671862, 671862, 671862, 671862, …
+## $ X_MAX   &lt;int&gt; 686462, 686462, 686462, 686462, 686462, 686462, 686462, …
+## $ Y_MIN   &lt;int&gt; 229137, 229137, 229137, 229137, 229137, 229137, 229137, …
+## $ Y_MAX   &lt;int&gt; 245396, 245396, 245396, 245396, 245396, 245396, 245396, …
+## $ X_CNTR  &lt;int&gt; 678300, 678300, 678300, 678300, 678300, 678300, 678300, …
+## $ Y_CNTR  &lt;int&gt; 235900, 235900, 235900, 235900, 235900, 235900, 235900, …
+## $ Z_MIN   &lt;int&gt; 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 3…
+## $ Z_MAX   &lt;int&gt; 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 9…
+## $ Z_AVG   &lt;int&gt; 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 5…
+## $ Z_MED   &lt;int&gt; 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 5…</code></pre>
 <pre class="r"><code># The cantons are identified by the KTNR column
 # Extract from this data the districts of two cantons (18 = Graubünden, 21 = Ticino)
 
@@ -138,8 +137,12 @@ ggplot(d, aes(x = long, y = lat, group = group)) +
                    values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
                               &quot;Romandie&quot; = &quot;#b2df8a&quot;,
                               &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
-  theme_void()</code></pre>
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
 <p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="troubleshooting" class="section level3">
+<h3>Troubleshooting</h3>
 <p>What is the problem with this plot (aside from the ugly black color of the boundaries)? The boundaries correspond to district, not cantonal level (what I wanted). As the variable <code>KTNR</code> identifies the cantons, I did the following:</p>
 <pre class="r"><code># draw a ggplot and changed to aes(....group = KTNR)
 ggplot(d, aes(x = long, y = lat, group = KTNR)) +
@@ -148,9 +151,10 @@ ggplot(d, aes(x = long, y = lat, group = KTNR)) +
                    values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
                               &quot;Romandie&quot; = &quot;#b2df8a&quot;,
                               &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
-  theme_void()</code></pre>
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
 <p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>…It got even worse…cc</p>
+<p>…It got even worse…</p>
 <p>I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! 😎), I realized that my problem is with the data: <code>aes(x = long, y = lat)</code> in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn’t work either, so what to do else?</p>
 <p>Look at the data structure:</p>
 <pre class="r"><code># a list containing 8 elements (dataframes)
@@ -160,7 +164,10 @@ class(shp_df)</code></pre>
 <pre class="r"><code># very long output, not shown here
 #str(shp_df)</code></pre>
 <p>I now knew that I could use the plot from above and check each element of the list -
-either by hand (7x copy/paste) or with <code>purrr::map()</code>!</p>
+either by hand (corresponding to seven times copy/paste) or with <code>purrr::map()</code>!</p>
+</div>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
 <pre class="r"><code># create a function to map over each element of the list to
 # identify if one is on cantonal-level
 my_plot &lt;- function(data){
@@ -211,9 +218,11 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
                    values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
                               &quot;Romandie&quot; = &quot;#b2df8a&quot;,
                               &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
-  theme_void()</code></pre>
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
 <p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here…</p>
+</div>
 </div>
 
 				</main>
