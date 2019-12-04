@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shurp2018 on Catherine Blatter</title>
-    <link>/tags/shurp2018/</link>
-    <description>Recent content in Shurp2018 on Catherine Blatter</description>
+    <title>shurp2018 on Catherine Blatter</title>
+    <link>https://cathblatter.rbind.io/tags/shurp2018/</link>
+    <description>Recent content in shurp2018 on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/shurp2018/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/tags/shurp2018/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>shurp2018 - :package:</title>
-      <link>/project/shurp2018/</link>
+      <link>https://cathblatter.rbind.io/project/shurp2018/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/shurp2018/</guid>
+      <guid>https://cathblatter.rbind.io/project/shurp2018/</guid>
       <description>What is it about?
 Some of my recent work includes writing the shurp2018-package.
 This R package contains all the functions used to produce descriptive reports for a study called SHURP2018 - a research project at the Institute of Nursing Science, more information is found here: https://shurp.unibas.ch

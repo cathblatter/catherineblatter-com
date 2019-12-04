@@ -1,152 +1,119 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/2019/11/28/using-purrrmap-to-identify-data/</loc>
+    <loc>https://cathblatter.rbind.io/blog/</loc>
     <lastmod>2019-11-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</loc>
+    <loc>https://cathblatter.rbind.io/categories/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/categories/data-preparation/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/hints/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/blog/2019/11/28/using-purrrmap-to-identify-data/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/categories/data-preparation-series/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/the-non-scientific-literature-review/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/robert/</loc>
-    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2019/02/16/useful-hints/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/shurp2018/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/code/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/data-preparation/</loc>
-    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/data-preparation-series/</loc>
+    <loc>https://cathblatter.rbind.io/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut/</loc>
     <lastmod>2019-05-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/data-wrangling/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/endnote/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/hint/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/hints/</loc>
-    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/other/</loc>
+    <loc>https://cathblatter.rbind.io/project/robert/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <lastmod>2019-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/research-helpers/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/rismed/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/shurp2018/</loc>
-    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
+    <loc>https://cathblatter.rbind.io/categories/other/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/project/</loc>
+    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/categories/code/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/data-wrangling/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/categories/research-helpers/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/rismed/</loc>
+    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/categories/endnote/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/hint/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/tags/shurp2018/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/project/shurp2018/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</loc>
+    <lastmod>2019-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cathblatter.rbind.io/about/</loc>
   </url>
   
 </urlset>
