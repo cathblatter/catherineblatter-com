@@ -138,6 +138,22 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
 
 ```
 
+Edit: 
+thanks to the `ggswissmaps`-maintainer [gibo's](https://github.com/gibonet) help, the maps look now much prettier:
+
+```{r}
+ggplot(cant_level, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region)), color = "white", size = 0.2) +
+  scale_fill_manual(name = "Region",
+                    values = c("Ticino" = "grey90",
+                               "Romandie" = "#b2df8a",
+                               "Deutschschweiz" = "#a6cee3")) +
+  theme_void() +
+  theme(legend.position = "bottom") +
+  coord_equal() +
+  geom_polygon(aes(x = long, y = lat, group = group), 
+               data = shp_df[["g1s15"]], fill = "blue", color = NA)
+```
 
 
 The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here...  
