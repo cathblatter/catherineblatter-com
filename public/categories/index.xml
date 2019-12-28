@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Catherine Blatter</title>
@@ -6,13 +6,21 @@
     <description>Recent content in Categories on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cathblatter.rbind.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Data preparation</title>
+      <title>Code</title>
+      <link>https://cathblatter.rbind.io/categories/code/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cathblatter.rbind.io/categories/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Preparation</title>
       <link>https://cathblatter.rbind.io/categories/data-preparation/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -21,11 +29,20 @@
     </item>
     
     <item>
-      <title>Data preparation series</title>
+      <title>Data Preparation Series</title>
       <link>https://cathblatter.rbind.io/categories/data-preparation-series/</link>
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://cathblatter.rbind.io/categories/data-preparation-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Endnote</title>
+      <link>https://cathblatter.rbind.io/categories/endnote/</link>
+      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://cathblatter.rbind.io/categories/endnote/</guid>
       <description></description>
     </item>
     
@@ -39,29 +56,11 @@
     </item>
     
     <item>
-      <title>Code</title>
-      <link>https://cathblatter.rbind.io/categories/code/</link>
-      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://cathblatter.rbind.io/categories/code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Research helpers</title>
+      <title>Research Helpers</title>
       <link>https://cathblatter.rbind.io/categories/research-helpers/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://cathblatter.rbind.io/categories/research-helpers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Endnote</title>
-      <link>https://cathblatter.rbind.io/categories/endnote/</link>
-      <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://cathblatter.rbind.io/categories/endnote/</guid>
       <description></description>
     </item>
     
