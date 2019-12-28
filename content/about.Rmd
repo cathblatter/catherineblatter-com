@@ -12,7 +12,7 @@ menu: []
 ---
 
 My name is Catherine Blatter and I am trained as a registered general nurse (RN) located in Switzerland. 
-I work as a research assistant at the [Institute of Nursing Science](https://nursing.unibas.ch) (INS) at the University of Basel where I'm wrangling data for several projects using R and friends.  
+I work as a research assistant at the [Institute of Nursing Science](https://nursing.unibas.ch) (INS) at the University of Basel where I'm wrangling data for several projects.  
 
 This website is mantained personally and does not represent my employer's views. It is a result of learning about Git (version control), writing R packages and lots of other useful stuff for R.  
 

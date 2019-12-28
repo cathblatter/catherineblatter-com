@@ -81,7 +81,7 @@ more information will follow</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cathblatter.rbind.io/about/</guid>
-      <description>My name is Catherine Blatter and I am trained as a registered general nurse (RN) located in Switzerland. I work as a research assistant at the Institute of Nursing Science (INS) at the University of Basel where I’m wrangling data for several projects using R and friends.
+      <description>My name is Catherine Blatter and I am trained as a registered general nurse (RN) located in Switzerland. I work as a research assistant at the Institute of Nursing Science (INS) at the University of Basel where I’m wrangling data for several projects.
 This website is mantained personally and does not represent my employer’s views. It is a result of learning about Git (version control), writing R packages and lots of other useful stuff for R.</description>
     </item>
     
