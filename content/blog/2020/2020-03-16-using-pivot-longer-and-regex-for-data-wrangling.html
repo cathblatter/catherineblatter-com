@@ -1,0 +1,181 @@
+---
+title: Using tidyr::pivot_longer() and regex for data wrangling
+author: ~
+date: '2020-03-16'
+slug: using-pivot-longer-and-regex-for-data-wrangling
+type: blog
+categories: []
+tags: []
+Categories:
+  - Data wrangling
+  - regex
+Description: ''
+Tags:
+  - Data wrangling
+  - regex
+menu: []
+---
+
+
+
+<div id="tldr" class="section level1">
+<h1>TL;DR</h1>
+<p>This code shows you how you can effectively wrangle your dataframe from wide to
+long using <code>tidyr::pivot_longer()</code> combined with regular expressions for properly
+naming the variables.</p>
+</div>
+<div id="your-data-is-not-in-the-right-format" class="section level1">
+<h1>Your data is… not in the right format!</h1>
+<p>You have a wide dataset of patient data, each patient identified through <code>ID</code>.
+They have been hospitalised multiple times, each place of hospitalisation and
+outcome listed in its own variable. Place and Outcome of a hospitalization are
+linked with the same suffix number, e.g. <code>_2_2</code>:</p>
+<pre class="r"><code># load packages
+suppressPackageStartupMessages(library(tidyverse))
+
+# create sample data
+patient_data &lt;- 
+tibble::tribble(~ID, ~Hosp_Place_1, ~Hosp_Outcome_1, ~Hosp_Place_2_2, 
+                ~Hosp_Outcome_2_2, ~Hosp_Place_2_3, ~Hosp_Outcome_2_3, 
+                1, &quot;London&quot;, &quot;Alive&quot;, &quot;Paris&quot;, &quot;alive&quot;, &quot;Rome&quot;, &quot;dead&quot;,
+                2, &quot;Paris&quot;, &quot;alive&quot;, &quot;Rome&quot;, &quot;alive&quot;, &quot;London&quot;, &quot;alive&quot;,
+                3, &quot;Berne&quot;, &quot;dead&quot;, NA_character_, NA_character_, NA_character_, NA_character_) 
+
+# look at data
+patient_data</code></pre>
+<pre><code>## # A tibble: 3 x 7
+##      ID Hosp_Place_1 Hosp_Outcome_1 Hosp_Place_2_2 Hosp_Outcome_2_2
+##   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;           
+## 1     1 London       Alive          Paris          alive           
+## 2     2 Paris        alive          Rome           alive           
+## 3     3 Berne        dead           &lt;NA&gt;           &lt;NA&gt;            
+## # … with 2 more variables: Hosp_Place_2_3 &lt;chr&gt;, Hosp_Outcome_2_3 &lt;chr&gt;</code></pre>
+<p>Patient No. 3 died in his first hospitatisation, so the following variables are listed <code>NA</code>.</p>
+<p>For some analysis, this data structure would work ok, but for your specific questions
+you need to switch the unit of analysis to “hospitalisation” instead of “patient”.
+In other words, you’d like to switch the data from wide to long.</p>
+<p>Thanks to the tidyverse’s initiative of making clear function names, it might be
+obvious, that <code>tidyr::pivot_longer()</code> should do what you want.</p>
+</div>
+<div id="familiarize-yourself-with-the-function---what-to-do-with-tidyrpivot_longer" class="section level1">
+<h1>Familiarize yourself with the function - What to do with tidyr::pivot_longer()?</h1>
+<p>The first step is to initially think about, what the outcome should look like and
+what input-arguments the function takes, so let’s do this:</p>
+<pre class="r"><code># tidyr::pivot_long() and its arguments
+tidyr::pivot_longer(data, 
+                    cols, 
+                    names_to = &quot;name&quot;, 
+                    names_prefix = NULL, 
+                    names_sep = NULL, 
+                    names_pattern = NULL,
+                    names_ptypes = list(),
+                    names_repair = &quot;check_unique&quot;,
+                    values_to = &quot;value&quot;,
+                    values_drop_na = FALSE,
+                    values_ptypes = list())</code></pre>
+<p>As you can see, only <code>data</code> and <code>cols</code> are effectively needed, so let’s try that.
+As I want to exclude the Patient-ID from pivoting, I remove this line from pivoting:</p>
+<pre class="r"><code># as with all the tidyverse functions you can easily pipe-in the data as 
+# the first argument
+
+# &#39;-ID&#39; means, that all variables are used other than ID
+patient_data %&gt;% 
+  pivot_longer(cols = -ID)</code></pre>
+<pre><code>## # A tibble: 18 x 3
+##       ID name             value 
+##    &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; 
+##  1     1 Hosp_Place_1     London
+##  2     1 Hosp_Outcome_1   Alive 
+##  3     1 Hosp_Place_2_2   Paris 
+##  4     1 Hosp_Outcome_2_2 alive 
+##  5     1 Hosp_Place_2_3   Rome  
+##  6     1 Hosp_Outcome_2_3 dead  
+##  7     2 Hosp_Place_1     Paris 
+##  8     2 Hosp_Outcome_1   alive 
+##  9     2 Hosp_Place_2_2   Rome  
+## 10     2 Hosp_Outcome_2_2 alive 
+## 11     2 Hosp_Place_2_3   London
+## 12     2 Hosp_Outcome_2_3 alive 
+## 13     3 Hosp_Place_1     Berne 
+## 14     3 Hosp_Outcome_1   dead  
+## 15     3 Hosp_Place_2_2   &lt;NA&gt;  
+## 16     3 Hosp_Outcome_2_2 &lt;NA&gt;  
+## 17     3 Hosp_Place_2_3   &lt;NA&gt;  
+## 18     3 Hosp_Outcome_2_3 &lt;NA&gt;</code></pre>
+<pre class="r"><code># I could have put the following instead, meaning selecting the variables I want
+# but it was generally shorter to drop just the ID
+# patient_data %&gt;%
+#   pivot_longer(cols = Hosp_Place_1:Hosp_Outcome_2_3)</code></pre>
+<p>Something clearly happened, but <code>name</code> and <code>value</code> are not exactly what we want here.<br />
+The colnames “name” and “value” are actually coming from the default arguments.<br />
+What is now the next step?</p>
+</div>
+<div id="mental-image-of-desired-outcome---how-should-my-dataframe-look-like" class="section level1">
+<h1>Mental image of desired outcome - How should my dataframe look like?</h1>
+<p>My desired output is a dataframe with the colum names <code>ID</code>, <code>Hosp_Place</code> and <code>Hosp_Outcome</code>.
+Additionally, I want a variable - lets call it <code>hosp_sequence</code> - that captures the number of
+the hospitalisation (you remember the suffix of the original variable names).</p>
+<p><code>tidyr::pivot_longer()</code>’s <code>names_to =</code>-arguments states in the help-page:<br />
+<em>Can be a character vector, creating multiple columns, if names_sep or names_pattern is provided.</em></p>
+<p>If you can detect any patterns in the column names, its possible to use them for the
+column naming. If we look at Hosp_Place_1 and Hosp_Outcome_1 we can clearly see
+a pattern: The information I want as name is <code>Hosp_Place</code> and <code>Hosp_Outcome</code> and the
+number followed should be put in variable called <code>hosp_sequence</code>.</p>
+<p>This translates to something like <code>(Hosp_Place)_(1)</code> where the parts in brackets
+correspond to the inputs given in <code>names_to =</code>. With the <code>.value</code>-argument, I
+can easily take over the string as it is.</p>
+<p>I actually found this very confusing (honestly - still do…) and I had great help for defining the
+regular expression from R4DS<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Finally, this is the code we need:</p>
+<pre class="r"><code># this code should do the trick
+patient_data %&gt;% 
+  pivot_longer(cols = -ID, 
+               names_to = c(&quot;.value&quot;, &quot;hosp_sequence&quot;),
+               names_pattern = &#39;(^[A-z]+_[A-z]+)_([0-9].*)&#39;)</code></pre>
+<pre><code>## # A tibble: 9 x 4
+##      ID hosp_sequence Hosp_Place Hosp_Outcome
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;       
+## 1     1 1             London     Alive       
+## 2     1 2_2           Paris      alive       
+## 3     1 2_3           Rome       dead        
+## 4     2 1             Paris      alive       
+## 5     2 2_2           Rome       alive       
+## 6     2 2_3           London     alive       
+## 7     3 1             Berne      dead        
+## 8     3 2_2           &lt;NA&gt;       &lt;NA&gt;        
+## 9     3 2_3           &lt;NA&gt;       &lt;NA&gt;</code></pre>
+<p>Wait, what is happening with rows 8 and 9? This is my deceased Patient No. 3 an those
+are not hospitalisations anymore - how do I drop those rows?</p>
+<pre class="r"><code># you can either use dplyr::drop_na() or specify the built-in argument to TRUE
+patient_data %&gt;% 
+  pivot_longer(cols = -ID, 
+               names_to = c(&quot;.value&quot;, &quot;hosp_sequence&quot;),
+               names_pattern = &#39;(^[A-z]+_[A-z]+)_([0-9].*)&#39;, 
+               values_drop_na = TRUE)</code></pre>
+<pre><code>## # A tibble: 7 x 4
+##      ID hosp_sequence Hosp_Place Hosp_Outcome
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;       
+## 1     1 1             London     Alive       
+## 2     1 2_2           Paris      alive       
+## 3     1 2_3           Rome       dead        
+## 4     2 1             Paris      alive       
+## 5     2 2_2           Rome       alive       
+## 6     2 2_3           London     alive       
+## 7     3 1             Berne      dead</code></pre>
+</div>
+<div id="comment" class="section level1">
+<h1>Comment</h1>
+<p>I wrote this blogpost after after solving exactly this issue with a real dataset for a colleague.<br />
+My work as a research programmer allows me to dive into data wrangling problems on a regular basis.
+As I learned most of my R skills from other blogposts from the fantastic R community, I
+started to write up some of the problems I encountered for others. I also use my
+previous blogposts sometimes, when I have to dig up old code…</p>
+<p>Any comments from your side? Let me know!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200" class="uri">https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200</a> If you are not already on this slack - sign up for it! Its just so great, low key
+help and great learning opportunities to just dive through the topics. <a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

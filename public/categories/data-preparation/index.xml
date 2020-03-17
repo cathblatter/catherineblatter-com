@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Preparation on Catherine Blatter</title>
-    <link>https://cathblatter.rbind.io/categories/data-preparation/</link>
-    <description>Recent content in Data Preparation on Catherine Blatter</description>
+    <title>Data preparation on Catherine Blatter</title>
+    <link>/categories/data-preparation/</link>
+    <description>Recent content in Data preparation on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cathblatter.rbind.io/categories/data-preparation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/data-preparation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using purrr::map() to identify data</title>
-      <link>https://cathblatter.rbind.io/blog/2019/11/28/using-purrrmap-to-identify-data/</link>
+      <link>/blog/2019/11/28/using-purrrmap-to-identify-data/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://cathblatter.rbind.io/blog/2019/11/28/using-purrrmap-to-identify-data/</guid>
+      <guid>/blog/2019/11/28/using-purrrmap-to-identify-data/</guid>
       <description>last edited: 2019-12-28
 What happened? Recently I wanted to explore plotting R for the first time and discovered the ggswissmaps-package.
 I’m new to the structure of geospatial data so I read the introductory vignette and followed the examples.
