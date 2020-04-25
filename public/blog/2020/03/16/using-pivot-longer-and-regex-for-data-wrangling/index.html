@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		
+		<title>Using tidyr::pivot_longer() and regex for data wrangling &middot; Catherine Blatter</title>
+		
+
+		
+			
+		
+
+		
+
+		
+		
+
+
+<link href='/js/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+		
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="Catherine Blatter"/>
+<meta name="msapplication-TileColor" content="#002B36" />
+<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+<meta name="theme-color" content="#ffffff">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Catherine Blatter">
+
+<link href="/css/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+		<link rel="stylesheet" href="https://cathblatter.rbind.io/font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="/css/poole.css">
+		<link rel="stylesheet" href="/css/syntax.css">
+		<link rel="stylesheet" href="/css/hyde.css">
+		
+		
+		<link rel="stylesheet" href="/css/hamburgers.css">
+		
+		<link rel="stylesheet" href="/css/custom.css">
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Catherine Blatter">
+		<link href="https://cathblatter.rbind.io/blog/2020/03/16/using-pivot-longer-and-regex-for-data-wrangling" rel="canonical">
+	</head>
+
+	<body class="base16-solarized-cath  h-entry">
+		<main class="content container" role="main">
+			<article class="post">
+				<header>
+					<a class="u-url" href="https://cathblatter.rbind.io/blog/2020/03/16/using-pivot-longer-and-regex-for-data-wrangling">
+						<h1 class="post-title p-name">Using tidyr::pivot_longer() and regex for data wrangling</h1>
+					</a>
+					<h3 class="post-author">Catherine Blatter</h3>
+					<time class="post-date dt-published" datetime="2020-03-16T00:00:00Z">Monday, 16 March 2020</time>
+					
+				</header>
+				<main class="post-content e-content">
+					
+
+
+<div id="tldr" class="section level1">
+<h1>TL;DR</h1>
+<p>This code shows you how you can effectively wrangle your dataframe from wide to
+long using <code>tidyr::pivot_longer()</code> combined with regular expressions for properly
+naming the variables.</p>
+</div>
+<div id="your-data-is-not-in-the-right-format" class="section level1">
+<h1>Your data is… not in the right format!</h1>
+<p>You have a wide dataset of patient data, each patient identified through <code>ID</code>.
+They have been hospitalised multiple times, each place of hospitalisation and
+outcome listed in its own variable. Place and Outcome of a hospitalization are
+linked with the same suffix number, e.g. <code>_2_2</code>:</p>
+<pre class="r"><code># load packages
+suppressPackageStartupMessages(library(tidyverse))
+
+# create sample data
+patient_data &lt;- 
+tibble::tribble(~ID, ~Hosp_Place_1, ~Hosp_Outcome_1, ~Hosp_Place_2_2, 
+                ~Hosp_Outcome_2_2, ~Hosp_Place_2_3, ~Hosp_Outcome_2_3, 
+                1, &quot;London&quot;, &quot;Alive&quot;, &quot;Paris&quot;, &quot;alive&quot;, &quot;Rome&quot;, &quot;dead&quot;,
+                2, &quot;Paris&quot;, &quot;alive&quot;, &quot;Rome&quot;, &quot;alive&quot;, &quot;London&quot;, &quot;alive&quot;,
+                3, &quot;Berne&quot;, &quot;dead&quot;, NA_character_, NA_character_, NA_character_, NA_character_) 
+
+# look at data
+patient_data</code></pre>
+<pre><code>## # A tibble: 3 x 7
+##      ID Hosp_Place_1 Hosp_Outcome_1 Hosp_Place_2_2 Hosp_Outcome_2_2
+##   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;           
+## 1     1 London       Alive          Paris          alive           
+## 2     2 Paris        alive          Rome           alive           
+## 3     3 Berne        dead           &lt;NA&gt;           &lt;NA&gt;            
+## # … with 2 more variables: Hosp_Place_2_3 &lt;chr&gt;, Hosp_Outcome_2_3 &lt;chr&gt;</code></pre>
+<p>Patient No. 3 died in his first hospitatisation, so the following variables are listed <code>NA</code>.</p>
+<p>For some analysis, this data structure would work ok, but for your specific questions
+you need to switch the unit of analysis to “hospitalisation” instead of “patient”.
+In other words, you’d like to switch the data from wide to long.</p>
+<p>Thanks to the tidyverse’s initiative of making clear function names, it might be
+obvious, that <code>tidyr::pivot_longer()</code> should do what you want.</p>
+</div>
+<div id="familiarize-yourself-with-the-function---what-to-do-with-tidyrpivot_longer" class="section level1">
+<h1>Familiarize yourself with the function - What to do with tidyr::pivot_longer()?</h1>
+<p>The first step is to initially think about, what the outcome should look like and
+what input-arguments the function takes, so let’s do this:</p>
+<pre class="r"><code># tidyr::pivot_long() and its arguments
+tidyr::pivot_longer(data, 
+                    cols, 
+                    names_to = &quot;name&quot;, 
+                    names_prefix = NULL, 
+                    names_sep = NULL, 
+                    names_pattern = NULL,
+                    names_ptypes = list(),
+                    names_repair = &quot;check_unique&quot;,
+                    values_to = &quot;value&quot;,
+                    values_drop_na = FALSE,
+                    values_ptypes = list())</code></pre>
+<p>As you can see, only <code>data</code> and <code>cols</code> are effectively needed, so let’s try that.
+As I want to exclude the Patient-ID from pivoting, I remove this line from pivoting:</p>
+<pre class="r"><code># as with all the tidyverse functions you can easily pipe-in the data as 
+# the first argument
+
+# &#39;-ID&#39; means, that all variables are used other than ID
+patient_data %&gt;% 
+  pivot_longer(cols = -ID)</code></pre>
+<pre><code>## # A tibble: 18 x 3
+##       ID name             value 
+##    &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; 
+##  1     1 Hosp_Place_1     London
+##  2     1 Hosp_Outcome_1   Alive 
+##  3     1 Hosp_Place_2_2   Paris 
+##  4     1 Hosp_Outcome_2_2 alive 
+##  5     1 Hosp_Place_2_3   Rome  
+##  6     1 Hosp_Outcome_2_3 dead  
+##  7     2 Hosp_Place_1     Paris 
+##  8     2 Hosp_Outcome_1   alive 
+##  9     2 Hosp_Place_2_2   Rome  
+## 10     2 Hosp_Outcome_2_2 alive 
+## 11     2 Hosp_Place_2_3   London
+## 12     2 Hosp_Outcome_2_3 alive 
+## 13     3 Hosp_Place_1     Berne 
+## 14     3 Hosp_Outcome_1   dead  
+## 15     3 Hosp_Place_2_2   &lt;NA&gt;  
+## 16     3 Hosp_Outcome_2_2 &lt;NA&gt;  
+## 17     3 Hosp_Place_2_3   &lt;NA&gt;  
+## 18     3 Hosp_Outcome_2_3 &lt;NA&gt;</code></pre>
+<pre class="r"><code># I could have put the following instead, meaning selecting the variables I want
+# but it was generally shorter to drop just the ID
+# patient_data %&gt;%
+#   pivot_longer(cols = Hosp_Place_1:Hosp_Outcome_2_3)</code></pre>
+<p>Something clearly happened, but <code>name</code> and <code>value</code> are not exactly what we want here.<br />
+The colnames “name” and “value” are actually coming from the default arguments.<br />
+What is now the next step?</p>
+</div>
+<div id="mental-image-of-desired-outcome---how-should-my-dataframe-look-like" class="section level1">
+<h1>Mental image of desired outcome - How should my dataframe look like?</h1>
+<p>My desired output is a dataframe with the colum names <code>ID</code>, <code>Hosp_Place</code> and <code>Hosp_Outcome</code>.
+Additionally, I want a variable - lets call it <code>hosp_sequence</code> - that captures the number of
+the hospitalisation (you remember the suffix of the original variable names).</p>
+<p><code>tidyr::pivot_longer()</code>’s <code>names_to =</code>-arguments states in the help-page:<br />
+<em>Can be a character vector, creating multiple columns, if names_sep or names_pattern is provided.</em></p>
+<p>If you can detect any patterns in the column names, its possible to use them for the
+column naming. If we look at Hosp_Place_1 and Hosp_Outcome_1 we can clearly see
+a pattern: The information I want as name is <code>Hosp_Place</code> and <code>Hosp_Outcome</code> and the
+number followed should be put in variable called <code>hosp_sequence</code>.</p>
+<p>This translates to something like <code>(Hosp_Place)_(1)</code> where the parts in brackets
+correspond to the inputs given in <code>names_to =</code>. With the <code>.value</code>-argument, I
+can easily take over the string as it is.</p>
+<p>I actually found this very confusing (honestly - still do…) and I had great help for defining the
+regular expression from R4DS<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Finally, this is the code we need:</p>
+<pre class="r"><code># this code should do the trick
+patient_data %&gt;% 
+  pivot_longer(cols = -ID, 
+               names_to = c(&quot;.value&quot;, &quot;hosp_sequence&quot;),
+               names_pattern = &#39;(^[A-z]+_[A-z]+)_([0-9].*)&#39;)</code></pre>
+<pre><code>## # A tibble: 9 x 4
+##      ID hosp_sequence Hosp_Place Hosp_Outcome
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;       
+## 1     1 1             London     Alive       
+## 2     1 2_2           Paris      alive       
+## 3     1 2_3           Rome       dead        
+## 4     2 1             Paris      alive       
+## 5     2 2_2           Rome       alive       
+## 6     2 2_3           London     alive       
+## 7     3 1             Berne      dead        
+## 8     3 2_2           &lt;NA&gt;       &lt;NA&gt;        
+## 9     3 2_3           &lt;NA&gt;       &lt;NA&gt;</code></pre>
+<p>Wait, what is happening with rows 8 and 9? This is my deceased Patient No. 3 an those
+are not hospitalisations anymore - how do I drop those rows?</p>
+<pre class="r"><code># you can either use dplyr::drop_na() or specify the built-in argument to TRUE
+patient_data %&gt;% 
+  pivot_longer(cols = -ID, 
+               names_to = c(&quot;.value&quot;, &quot;hosp_sequence&quot;),
+               names_pattern = &#39;(^[A-z]+_[A-z]+)_([0-9].*)&#39;, 
+               values_drop_na = TRUE)</code></pre>
+<pre><code>## # A tibble: 7 x 4
+##      ID hosp_sequence Hosp_Place Hosp_Outcome
+##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;       
+## 1     1 1             London     Alive       
+## 2     1 2_2           Paris      alive       
+## 3     1 2_3           Rome       dead        
+## 4     2 1             Paris      alive       
+## 5     2 2_2           Rome       alive       
+## 6     2 2_3           London     alive       
+## 7     3 1             Berne      dead</code></pre>
+</div>
+<div id="comment" class="section level1">
+<h1>Comment</h1>
+<p>I wrote this blogpost after after solving exactly this issue with a real dataset for a colleague.<br />
+My work as a research programmer allows me to dive into data wrangling problems on a regular basis.
+As I learned most of my R skills from other blogposts from the fantastic R community, I
+started to write up some of the problems I encountered for others. I also use my
+previous blogposts sometimes, when I have to dig up old code…</p>
+<p>Any comments from your side? Let me know!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200" class="uri">https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200</a> If you are not already on this slack - sign up for it! Its just so great, low key
+help and great learning opportunities to just dive through the topics. <a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+				</main>
+				<footer class="footer">
+				  <hr>
+					
+					<span>
+						Category:
+						<a class="p-category" href="/categories/data-wrangling/">Data wrangling</a>, <a class="p-category" href="/categories/regex/">regex</a>
+					</span>
+					
+					
+					<p>
+						Tags:
+						<a class="p-category" href="/tags/data-wrangling/">Data wrangling</a>, <a class="p-category" href="/tags/regex/">regex</a>
+
+					</p>
+					
+				</footer>
+			</article>
+		</main>
+			  <button class="hamburger hamburger--arrow is-active" type="button" onclick="document.getElementsByClassName('sidebar')[0].classList.toggle('collapsed');document.getElementsByClassName('content')[0].classList.toggle('expanded');document.getElementsByClassName('hamburger')[0].classList.toggle('is-active');document.getElementsByClassName('hamburger-inner')[0].classList.toggle('is-active')">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button> 
+		<aside class="sidebar">
+			<div class="container sidebar-sticky">
+				<header class="sidebar-about h-card vcard p-author">
+					
+					<a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">
+						<img class="u-photo" src="https://cathblatter.rbind.io/images/catherine.png" width=128 height=128 />
+					</a>
+					
+
+					
+					<span class="site-title u-name fn">
+					  <a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">Catherine Blatter</a>
+				  </span>
+					
+
+					<p class="lead p-note">
+						 RN, MSc | #rstats | likes bikes, data &amp; the nordic outdoors 🇳🇴🇸🇪🇮🇸 
+					</p>
+
+					<nav>
+						<ul class="sidebar-nav">
+							
+							<li><a href="/about/"> About </a></li>
+							
+							<li><a href="/blog/"> Posts </a></li>
+							
+						</ul>
+					</nav>
+
+					
+						<aside class="contact">
+						  
+							  <h3 class="contact-head">Links</h3>
+						  
+							<ul class="contact-list">
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-twitter fa-fw'></i>
+		  						  
+		  							<a href="https://twitter.com/cathblatter" class="u-url url" rel="me">
+		  							  Twitter
+		  							</a>
+								
+								</li>
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-github fa-fw'></i>
+		  						  
+		  							<a href="https://github.com/cathblatter" class="u-url url" rel="me">
+		  							  GitHub
+		  							</a>
+								
+								</li>
+								
+							</ul>
+						</aside>
+					
+				</header>
+
+				<footer>&copy; 2020. All rights reserved. </footer>
+			</div>
+		</aside>
+
+		  <footer>
+  <script src="/js/jquery-latest.js"></script>
+<script src="/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+  
+  
+  
+
+  <script src="/js/highlight.js/9.11.0/highlight.min.js"></script>
+  
+  
+  
+  <script src="/js/highlight.js/9.11.0/languages/r.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/yaml.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/bash.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/tex.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/sql.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/markdown.min.js"></script>
+  <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+  
+
+ 
+  
+
+  
+  </footer>
+  </body>
+</html>
+
+	</body>
+</html>
