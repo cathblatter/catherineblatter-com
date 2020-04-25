@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Other on Catherine Blatter</title>
-    <link>/categories/other/</link>
+    <link>https://cathblatter.rbind.io/categories/other/</link>
     <description>Recent content in Other on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/other/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title> :car: Robert :world_map:</title>
-      <link>/project/robert/</link>
+      <link>https://cathblatter.rbind.io/project/robert/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/robert/</guid>
+      <guid>https://cathblatter.rbind.io/project/robert/</guid>
       <description>My car - Robert - likes travelling and we both like maps 🌍. A further personal project will be to explore spatial data in R…</description>
     </item>
     
