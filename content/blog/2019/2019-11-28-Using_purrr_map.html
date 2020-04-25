@@ -14,10 +14,9 @@ Tags:
 menu: ''
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p><em>last edited: 2020-04-24</em></p>
+<p><em>last edited: 2020-04-25</em></p>
 <div id="what-happened" class="section level1">
 <h1>What happened?</h1>
 <p>Recently I wanted to explore plotting R for the first time and discovered the
@@ -28,15 +27,15 @@ menu: ''
 <pre class="r"><code>#install.packages(&quot;ggswissmaps&quot;)
 
 suppressPackageStartupMessages(library(ggswissmaps))
-suppressPackageStartupMessages(library(tidyverse))</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code># Data frame with the coordinates of all swiss districts
+suppressPackageStartupMessages(library(tidyverse))
+
+# Data frame with the coordinates of all swiss districts
 d &lt;- shp_df[[&quot;g1b15&quot;]]
 
 # Look at the structure of the data frame
 glimpse(d)</code></pre>
-<pre><code>## Rows: 19,502
-## Columns: 21
+<pre><code>## Observations: 19,502
+## Variables: 21
 ## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102…
 ## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030…
 ## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
@@ -190,6 +189,6 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
 <hr />
 <ol>
 <li id="fn1"><p>In the meantime, the package maintainer provided me with the working links:
-<a href="https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html" class="uri">https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<a href="https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html" class="uri">https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html</a>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

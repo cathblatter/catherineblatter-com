@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		
+		<title>Importing Datasets with Swiss/German specifics: umlaut &middot; Catherine Blatter</title>
+		
+
+		
+			
+		
+
+		
+
+		
+		
+
+
+<link href='/js/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+		
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="Catherine Blatter"/>
+<meta name="msapplication-TileColor" content="#002B36" />
+<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+<meta name="theme-color" content="#ffffff">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Catherine Blatter">
+
+<link href="/css/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+		<link rel="stylesheet" href="https://cathblatter.rbind.io/font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="/css/poole.css">
+		<link rel="stylesheet" href="/css/syntax.css">
+		<link rel="stylesheet" href="/css/hyde.css">
+		
+		
+		<link rel="stylesheet" href="/css/hamburgers.css">
+		
+		<link rel="stylesheet" href="/css/custom.css">
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Catherine Blatter">
+		<link href="https://cathblatter.rbind.io/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut" rel="canonical">
+	</head>
+
+	<body class="base16-solarized-cath  h-entry">
+		<main class="content container" role="main">
+			<article class="post">
+				<header>
+					<a class="u-url" href="https://cathblatter.rbind.io/blog/2019/05/15/importing-datasets-with-swiss-german-specifics-umlaut">
+						<h1 class="post-title p-name">Importing Datasets with Swiss/German specifics: umlaut</h1>
+					</a>
+					<h3 class="post-author">Catherine Blatter</h3>
+					<time class="post-date dt-published" datetime="2019-05-15T00:00:00Z">Wednesday, 15 May 2019</time>
+					
+				</header>
+				<main class="post-content e-content">
+					
+
+
+<p>This blog post is part of the ongoing collection <em>Data preparation series</em>. It collects
+hints for preparation of data by some of the ongoing multi-center projcets at the <a href="https://nursing.unibas.ch">Institute of Nursing Science</a>.</p>
+<div id="why-is-this-needed" class="section level1">
+<h1>Why is this needed?</h1>
+<ul>
+<li><p>Many ongoing projects at INS are multi-center studies combining both survey-
+and routinely collected data</p></li>
+<li><p>Most of them have data coming from at least two different language
+regions (German- and French-speaking, eventually Italian-speaking)</p></li>
+<li><p>Importing those datasets in R with the systems default encoding by locale (UTF-8) fails often</p></li>
+</ul>
+<p>➡️ This blog post shows code for proper importing of datasets that contain umlaute (ä, ö, ü) ⬅️</p>
+</div>
+<div id="how-to-do-it" class="section level1">
+<h1>How to do it?</h1>
+<p>The trick is very easy: inside the function that imports the dataset into the global
+environment you need to change the encoding (from standard UTF-8) by setting your <em>locale</em> to <strong>latin1</strong>.</p>
+<p>My favourite way to import (middle sized .csv-files) is with the readr-📦:</p>
+<pre class="r"><code># this approach loads the whole readr-package
+library(readr)
+my_data &lt;- read_delim(&quot;path/to/my/file/my_data.csv&quot;, delim = &quot;;&quot;,
+                      locale = locale(encoding = &quot;latin1&quot;))
+
+# this approach does not load readr, but calls read_delim() from the readr-package
+my_data &lt;- readr::read_delim(&quot;path/to/my/file/my_data.csv&quot;, delim = &quot;;&quot;,
+                      locale = locale(encoding = &quot;latin1&quot;))</code></pre>
+<p>⚠️ with the readr-package the encoding is spelt <em>latin1</em>, but sometimes the spelling can differ:</p>
+<pre class="r"><code># attaching the package
+library(data.table)
+my_very_large_data &lt;- fread(&quot;path/to/my/verylargefile/my_very_large_data.csv&quot;, 
+                            sep = &quot;;&quot;, encoding=&quot;Latin-1&quot;)
+
+# calling the function directly
+my_very_large_data &lt;- data.table::fread(&quot;path/to/my/verylargefile/my_very_large_data.csv&quot;, 
+                                        sep = &quot;;&quot;, encoding=&quot;Latin-1&quot;)</code></pre>
+<p>\</p>
+</div>
+<div id="alternative-way-using-rstudios-ui" class="section level1">
+<h1>Alternative way using RStudio’s UI</h1>
+<ol style="list-style-type: decimal">
+<li>Hit <em>Import Dataset</em> -&gt; <em>From Text (readr)</em></li>
+</ol>
+<p><img src="/images/1.png" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Choose <em>configure</em>, then <em>encoding</em> (see, the default is UTF-8)</li>
+</ol>
+<p><img src="/images/2.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Hit <em>other</em> and a new popup opens</li>
+</ol>
+<p><img src="/images/3.png" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Type “latin1”, press <em>ok</em> - the popup closes - then choose <em>configure</em></li>
+</ol>
+<p><img src="/images/4.png" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>RStudios import panel changed the code preview - done :-)</li>
+</ol>
+<p><img src="/images/5.png" /></p>
+<p>💡 nice feature: if you hit import, the code is displayed
+in the console and you can copy/paste it into your .R-script. If I dont know the
+exact code, this is exactly what I do as a workaround!</p>
+<p>Did that work out for you? Please contact me if something is not clear!</p>
+</div>
+
+				</main>
+				<footer class="footer">
+				  <hr>
+					
+					<span>
+						Category:
+						<a class="p-category" href="/categories/data-preparation-series/">Data preparation series</a>
+					</span>
+					
+					
+					<p>
+						Tags:
+						<a class="p-category" href="/tags/hints/">Hints</a>
+
+					</p>
+					
+				</footer>
+			</article>
+		</main>
+			  <button class="hamburger hamburger--arrow is-active" type="button" onclick="document.getElementsByClassName('sidebar')[0].classList.toggle('collapsed');document.getElementsByClassName('content')[0].classList.toggle('expanded');document.getElementsByClassName('hamburger')[0].classList.toggle('is-active');document.getElementsByClassName('hamburger-inner')[0].classList.toggle('is-active')">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button> 
+		<aside class="sidebar">
+			<div class="container sidebar-sticky">
+				<header class="sidebar-about h-card vcard p-author">
+					
+					<a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">
+						<img class="u-photo" src="https://cathblatter.rbind.io/images/catherine.png" width=128 height=128 />
+					</a>
+					
+
+					
+					<span class="site-title u-name fn">
+					  <a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">Catherine Blatter</a>
+				  </span>
+					
+
+					<p class="lead p-note">
+						 RN, MSc | #rstats | likes bikes, data &amp; the nordic outdoors 🇳🇴🇸🇪🇮🇸 
+					</p>
+
+					<nav>
+						<ul class="sidebar-nav">
+							
+							<li><a href="/about/"> About </a></li>
+							
+							<li><a href="/blog/"> Posts </a></li>
+							
+						</ul>
+					</nav>
+
+					
+						<aside class="contact">
+						  
+							  <h3 class="contact-head">Links</h3>
+						  
+							<ul class="contact-list">
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-twitter fa-fw'></i>
+		  						  
+		  							<a href="https://twitter.com/cathblatter" class="u-url url" rel="me">
+		  							  Twitter
+		  							</a>
+								
+								</li>
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-github fa-fw'></i>
+		  						  
+		  							<a href="https://github.com/cathblatter" class="u-url url" rel="me">
+		  							  GitHub
+		  							</a>
+								
+								</li>
+								
+							</ul>
+						</aside>
+					
+				</header>
+
+				<footer>&copy; 2020. All rights reserved. </footer>
+			</div>
+		</aside>
+
+		  <footer>
+  <script src="/js/jquery-latest.js"></script>
+<script src="/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+  
+  
+  
+
+  <script src="/js/highlight.js/9.11.0/highlight.min.js"></script>
+  
+  
+  
+  <script src="/js/highlight.js/9.11.0/languages/r.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/yaml.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/bash.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/tex.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/sql.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/markdown.min.js"></script>
+  <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+  
+
+ 
+  
+<script src="/js/math-code.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script async src="https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+  
+  </footer>
+  </body>
+</html>
+
+	</body>
+</html>
