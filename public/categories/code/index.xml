@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Catherine Blatter</title>
+    <link>/categories/code/</link>
+    <description>Recent content in Code on Catherine Blatter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting PubMed metadata with RISmed directly into RStudio</title>
+      <link>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</guid>
+      <description>What is this post about? Introduction - what were the problems I faced? RISmed package How to use RISmed?  How could my thesis profit from the RISmed package?   What is this post about?  For my master’s thesis (stay tuned 😎) I came at a point where I was interested in having a closer look at publication meta data (e.g. publications per year)
+ PubMed usually does provide this service when you execute your search, for some reason it failed for my query</description>
+    </item>
+    
+  </channel>
+</rss>
