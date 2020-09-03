@@ -18,14 +18,12 @@ output:
     toc: true
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
 <li><a href="#what-is-this-post-about">What is this post about?</a></li>
 <li><a href="#introduction---what-were-the-problems-i-faced">Introduction - what were the problems I faced?</a></li>
-<li><a href="#rismed-package">RISmed package</a>
-<ul>
+<li><a href="#rismed-package">RISmed package</a><ul>
 <li><a href="#how-to-use-rismed">How to use RISmed?</a></li>
 </ul></li>
 <li><a href="#how-could-my-thesis-profit-from-the-rismed-package">How could my thesis profit from the RISmed package?</a></li>
@@ -54,7 +52,7 @@ specific case I greatly profited from it:</p>
 <p>Usually, PubMed provides a small graphical display of the yearly publication
 count on each query as shown in the image below:</p>
 <div class="figure">
-<img src="/images/pubmed_yearcount.png" alt="" />
+<img src="/images/pubmed_yearcount.png" alt="PubMed year count" />
 <p class="caption">PubMed year count</p>
 </div>
 <p>For some reason it failed for my exact search query. This was especially bad
@@ -71,11 +69,10 @@ the NCBI databases. In other words: you can extract the information from PubMed 
 R code - exactly what I needed!</p>
 <div id="how-to-use-rismed" class="section level3">
 <h3>How to use RISmed?</h3>
-<p>First you need to install <code>install.packages("RISmed")</code> or load the package:</p>
+<p>First you need to install <code>install.packages(&quot;RISmed&quot;)</code> or load the package:</p>
 <pre class="r"><code># load necessary packages
-library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code>library(RISmed)</code></pre>
+library(tidyverse)
+library(RISmed)</code></pre>
 <p>Then you specify the search_topic and search_query:</p>
 <pre class="r"><code># build the search topic
 search_topic &lt;- &#39;missed care [TI] OR implicit rationing [TI] OR unfinished care [TI]&#39;
@@ -179,8 +176,8 @@ R package to connect to a web-database should not be the end of my discoveries �
 search query, choose the results you want, then go to <em>Send to</em> -&gt; <em>File</em> and you
 get a .csv-file.<br />
 But hey, who does it this way when you can extract it with an
-R package?<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+R package?<a href="#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p>(not the figure above, as the sample string I used in this post
-was not as comprehensive as the full search string used in my thesis)<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+was not as comprehensive as the full search string used in my thesis)<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>

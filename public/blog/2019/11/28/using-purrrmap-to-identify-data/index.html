@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		
+		<title>Using purrr::map() to identify data &middot; Catherine Blatter</title>
+		
+
+		
+			
+		
+
+		
+
+		
+		
+
+
+<link href='/js/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+		
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="Catherine Blatter"/>
+<meta name="msapplication-TileColor" content="#002B36" />
+<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+<meta name="theme-color" content="#ffffff">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Catherine Blatter">
+
+<link href="/css/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="/css/poole.css">
+		<link rel="stylesheet" href="/css/syntax.css">
+		<link rel="stylesheet" href="/css/hyde.css">
+		
+		
+		<link rel="stylesheet" href="/css/hamburgers.css">
+		
+		<link rel="stylesheet" href="/css/custom.css">
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Catherine Blatter">
+		<link href="/blog/2019/11/28/using-purrrmap-to-identify-data" rel="canonical">
+	</head>
+
+	<body class="base16-solarized-cath  h-entry">
+		<main class="content container" role="main">
+			<article class="post">
+				<header>
+					<a class="u-url" href="/blog/2019/11/28/using-purrrmap-to-identify-data">
+						<h1 class="post-title p-name">Using purrr::map() to identify data</h1>
+					</a>
+					<h3 class="post-author">Catherine Blatter</h3>
+					<time class="post-date dt-published" datetime="2019-11-28T00:00:00Z">Thursday, 28 November 2019</time>
+					
+				</header>
+				<main class="post-content e-content">
+					
+
+
+<p><em>last edited: 2020-04-25</em></p>
+<div id="what-happened" class="section level1">
+<h1>What happened?</h1>
+<p>Recently I wanted to explore plotting R for the first time and discovered the
+<a href="https://cran.r-project.org/web/packages/ggswissmaps/ggswissmaps.pdf">ggswissmaps-package</a>.</p>
+<p>I’m new to the structure of geospatial data so I read the introductory vignette and followed the examples.</p>
+<div id="examples-from-the-ggswissmaps-package" class="section level3">
+<h3>Examples from the ggswissmaps-package</h3>
+<pre class="r"><code>#install.packages(&quot;ggswissmaps&quot;)
+
+suppressPackageStartupMessages(library(ggswissmaps))
+suppressPackageStartupMessages(library(tidyverse))
+
+# Data frame with the coordinates of all swiss districts
+d &lt;- shp_df[[&quot;g1b15&quot;]]
+
+# Look at the structure of the data frame
+glimpse(d)</code></pre>
+<pre><code>## Observations: 19,502
+## Variables: 21
+## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102…
+## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030…
+## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+## $ hole    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+## $ piece   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ group   &lt;fct&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0…
+## $ id      &lt;chr&gt; &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;…
+## $ BZNR    &lt;int&gt; 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
+## $ KTNR    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ GRNR    &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
+## $ AREA_HA &lt;int&gt; 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303, 11303…
+## $ X_MIN   &lt;int&gt; 671862, 671862, 671862, 671862, 671862, 671862, 671862, 67186…
+## $ X_MAX   &lt;int&gt; 686462, 686462, 686462, 686462, 686462, 686462, 686462, 68646…
+## $ Y_MIN   &lt;int&gt; 229137, 229137, 229137, 229137, 229137, 229137, 229137, 22913…
+## $ Y_MAX   &lt;int&gt; 245396, 245396, 245396, 245396, 245396, 245396, 245396, 24539…
+## $ X_CNTR  &lt;int&gt; 678300, 678300, 678300, 678300, 678300, 678300, 678300, 67830…
+## $ Y_CNTR  &lt;int&gt; 235900, 235900, 235900, 235900, 235900, 235900, 235900, 23590…
+## $ Z_MIN   &lt;int&gt; 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 380, 3…
+## $ Z_MAX   &lt;int&gt; 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 914, 9…
+## $ Z_AVG   &lt;int&gt; 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 561, 5…
+## $ Z_MED   &lt;int&gt; 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 557, 5…</code></pre>
+<pre class="r"><code># The cantons are identified by the KTNR column
+# Extract from this data the districts of two cantons (18 = Graubünden, 21 = Ticino)
+
+two_cantons &lt;- d %&gt;% filter(KTNR  %in%  c(18, 21))
+
+# And draw the map
+maps2_(two_cantons)</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>This worked quite fine - but I was more interested in plotting by language region, so I did
+the following:</p>
+<pre class="r"><code># add an aditional variable &quot;region&quot;
+d %&gt;% 
+  mutate(region = case_when(KTNR == 21 ~ &quot;Ticino&quot;,
+                                 KTNR  %in% c(22, 23, 24, 25, 26) ~ &quot;Romandie&quot;,
+                                 TRUE ~ &quot;Deutschschweiz&quot;)) -&gt; d
+
+# draw a ggplot 
+ggplot(d, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region)), color = &quot;black&quot;) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;) +
+  coord_equal()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="troubleshooting" class="section level3">
+<h3>Troubleshooting</h3>
+<p>What is the problem with this plot (aside from the ugly black color of the boundaries)? The boundaries correspond to district, not cantonal level (what I wanted). As the variable <code>KTNR</code> identifies the cantons, I did the following:</p>
+<pre class="r"><code># draw a ggplot and changed to aes(....group = KTNR)
+ggplot(d, aes(x = long, y = lat, group = KTNR)) +
+  geom_polygon(aes(fill = factor(region)), color = &quot;black&quot;) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;) +
+  coord_equal()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>…It got even worse…</p>
+<p>I did not understand why at first. After a brief online exchange in the Rladies-Slack (sidenote: fantastic place to learn! 😎), I realized that my problem is with the data: <code>aes(x = long, y = lat)</code> in my dataframe correspond to district level not cantonal level. Unfortunately, the link on the website of the Federal Office of Statistics didn’t work either<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, so what to do else?</p>
+<p>Look at the data structure:</p>
+<pre class="r"><code># a list containing 8 elements (dataframes)
+# which each contain lon/lat on different levels
+class(shp_df)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code># very long output, not shown here
+#str(shp_df)</code></pre>
+<p>I now knew that I could use the plot from above and check each element of the list -
+either by hand (corresponding to seven times copy/paste) or with <code>purrr::map()</code>!</p>
+</div>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code># create a function to map over each element of the list to
+# identify if one is on cantonal-level
+my_plot &lt;- function(data){
+  
+  ggplot2::ggplot(data = data, ggplot2::aes(x = long, y = lat, group = group)) +
+    ggplot2::geom_polygon() +
+    ggplot2::theme_void() +
+    coord_equal()
+  
+}</code></pre>
+<p>Then do the magic (1 simple line of code will give me 8 plots!):</p>
+<pre class="r"><code># map it over the list
+purrr::map(ggswissmaps::shp_df, ~my_plot(.x))</code></pre>
+<pre><code>## $g1b15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## 
+## $g1g15_encl</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre><code>## 
+## $g1g15_li</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<pre><code>## 
+## $g1g15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<pre><code>## 
+## $g1k15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-5.png" width="672" /></p>
+<pre><code>## 
+## $g1l15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-6.png" width="672" /></p>
+<pre><code>## 
+## $g1r15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-7.png" width="672" /></p>
+<pre><code>## 
+## $g1s15</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-6-8.png" width="672" /></p>
+<p>From the plots above I now know which dataframe to use:</p>
+<pre class="r"><code># solution: the second last element of the list is what I need
+cant_level &lt;- 
+  ggswissmaps::shp_df$g1k15 %&gt;% 
+      mutate(region = case_when(KTNR == 21 ~ &quot;Ticino&quot;,
+                                KTNR  %in% c(22, 23, 24, 25, 26) ~ &quot;Romandie&quot;,
+                                TRUE ~ &quot;Deutschschweiz&quot;))
+
+# draw the prettier graph
+ggplot(cant_level, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region))) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                   values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                              &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                              &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;) +
+  coord_equal()</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The output is what I wanted - altough we could improve it, as the lakes (which are left out in the district-level data) are not shown here…</p>
+<p><em>Edit:</em></p>
+<p>thanks to the <code>ggswissmaps</code>-maintainer <a href="https://github.com/gibonet">gibo’s</a> help, the maps look now much prettier:</p>
+<pre class="r"><code>ggplot(cant_level, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = factor(region)), color = &quot;white&quot;, size = 0.1) +
+  scale_fill_manual(name = &quot;Region&quot;,
+                    values = c(&quot;Ticino&quot; = &quot;grey90&quot;,
+                               &quot;Romandie&quot; = &quot;#b2df8a&quot;,
+                               &quot;Deutschschweiz&quot; = &quot;#a6cee3&quot;)) +
+  theme_void() +
+  theme(legend.position = &quot;bottom&quot;) +
+  coord_equal() + # add a layer for the lakes
+  geom_polygon(aes(x = long, y = lat, group = group), 
+               data = shp_df[[&quot;g1s15&quot;]], fill = NA, alpha = .5, color = &quot;#0529B3&quot;, size = .1, lty = &quot;solid&quot;)</code></pre>
+<p><img src="/blog/2019/2019-11-28-Using_purrr_map_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>In the meantime, the package maintainer provided me with the working links:
+<a href="https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html" class="uri">https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html</a>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+				</main>
+				<footer class="footer">
+				  <hr>
+					
+					<span>
+						Category:
+						<a class="p-category" href="/categories/data-preparation/">Data preparation</a>
+					</span>
+					
+					
+					<p>
+						Tags:
+						<a class="p-category" href="/tags/hints/">Hints</a>
+
+					</p>
+					
+				</footer>
+			</article>
+		</main>
+			  <button class="hamburger hamburger--arrow is-active" type="button" onclick="document.getElementsByClassName('sidebar')[0].classList.toggle('collapsed');document.getElementsByClassName('content')[0].classList.toggle('expanded');document.getElementsByClassName('hamburger')[0].classList.toggle('is-active');document.getElementsByClassName('hamburger-inner')[0].classList.toggle('is-active')">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button> 
+		<aside class="sidebar">
+			<div class="container sidebar-sticky">
+				<header class="sidebar-about h-card vcard p-author">
+					
+					<a class="u-url u-uid" rel="me" href="/">
+						<img class="u-photo" src="/images/catherine.png" width=128 height=128 />
+					</a>
+					
+
+					
+					<span class="site-title u-name fn">
+					  <a class="u-url u-uid" rel="me" href="/">Catherine Blatter</a>
+				  </span>
+					
+
+					<p class="lead p-note">
+						 RN, MSc | #rstats | likes bikes, data &amp; the nordic outdoors 🇳🇴🇸🇪🇮🇸 
+					</p>
+
+					<nav>
+						<ul class="sidebar-nav">
+							
+							<li><a href="/about/"> About </a></li>
+							
+							<li><a href="/blog/"> Posts </a></li>
+							
+						</ul>
+					</nav>
+
+					
+						<aside class="contact">
+						  
+							  <h3 class="contact-head">Links</h3>
+						  
+							<ul class="contact-list">
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-twitter fa-fw'></i>
+		  						  
+		  							<a href="https://twitter.com/cathblatter" class="u-url url" rel="me">
+		  							  Twitter
+		  							</a>
+								
+								</li>
+								
+								<li>
+									
+									  
+		  						    <i class='fa fa-github fa-fw'></i>
+		  						  
+		  							<a href="https://github.com/cathblatter" class="u-url url" rel="me">
+		  							  GitHub
+		  							</a>
+								
+								</li>
+								
+							</ul>
+						</aside>
+					
+				</header>
+
+				<footer>&copy; 2020. All rights reserved. </footer>
+			</div>
+		</aside>
+
+		  <footer>
+  <script src="/js/jquery-latest.js"></script>
+<script src="/js/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+  
+  
+  
+
+  <script src="/js/highlight.js/9.11.0/highlight.min.js"></script>
+  
+  
+  
+  <script src="/js/highlight.js/9.11.0/languages/r.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/yaml.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/bash.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/tex.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/sql.min.js"></script>
+  <script src="/js/highlight.js/9.11.0/languages/markdown.min.js"></script>
+  <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+  
+
+ 
+  
+<script src="/js/math-code.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script async src="https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+  
+  </footer>
+  </body>
+</html>
+
+	</body>
+</html>

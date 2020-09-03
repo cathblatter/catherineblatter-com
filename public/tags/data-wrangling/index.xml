@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data wrangling on Catherine Blatter</title>
+    <link>/tags/data-wrangling/</link>
+    <description>Recent content in Data wrangling on Catherine Blatter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/data-wrangling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using tidyr::pivot_longer() and regex for data wrangling</title>
+      <link>/blog/2020/03/16/using-pivot-longer-and-regex-for-data-wrangling/</link>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2020/03/16/using-pivot-longer-and-regex-for-data-wrangling/</guid>
+      <description>TL;DR This code shows you how you can effectively wrangle your dataframe from wide to long using tidyr::pivot_longer() combined with regular expressions for properly naming the variables.
+ Your data is… not in the right format! You have a wide dataset of patient data, each patient identified through ID. They have been hospitalised multiple times, each place of hospitalisation and outcome listed in its own variable. Place and Outcome of a hospitalization are linked with the same suffix number, e.</description>
+    </item>
+    
+    <item>
+      <title>Getting PubMed metadata with RISmed directly into RStudio</title>
+      <link>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2019/04/29/getting-pubmed-metadata-from-within-rstudio/</guid>
+      <description>What is this post about? Introduction - what were the problems I faced? RISmed package How to use RISmed?  How could my thesis profit from the RISmed package?   What is this post about?  For my master’s thesis (stay tuned 😎) I came at a point where I was interested in having a closer look at publication meta data (e.g. publications per year)
+ PubMed usually does provide this service when you execute your search, for some reason it failed for my query</description>
+    </item>
+    
+  </channel>
+</rss>

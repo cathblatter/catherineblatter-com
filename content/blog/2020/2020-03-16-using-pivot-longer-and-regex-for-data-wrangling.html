@@ -16,7 +16,6 @@ Tags:
 menu: []
 ---
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <div id="tldr" class="section level1">
@@ -30,11 +29,11 @@ naming the variables.</p>
 <p>You have a wide dataset of patient data, each patient identified through <code>ID</code>.
 They have been hospitalised multiple times, each place of hospitalisation and
 outcome listed in its own variable. Place and Outcome of a hospitalization are
-linked with the same suffix number, e.g. <code>_2_2</code>:</p>
+linked with the same suffix number, e.g. <code>_2_2</code>:</p>
 <pre class="r"><code># load packages
-suppressPackageStartupMessages(library(tidyverse))</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code># create sample data
+suppressPackageStartupMessages(library(tidyverse))
+
+# create sample data
 patient_data &lt;- 
 tibble::tribble(~ID, ~Hosp_Place_1, ~Hosp_Outcome_1, ~Hosp_Place_2_2, 
                 ~Hosp_Outcome_2_2, ~Hosp_Place_2_3, ~Hosp_Outcome_2_3, 
@@ -177,6 +176,6 @@ previous blogposts sometimes, when I have to dig up old code…</p>
 <hr />
 <ol>
 <li id="fn1"><p><a href="https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200" class="uri">https://rfordatascience.slack.com/archives/C8K09CDNZ/p1584129595187200</a> If you are not already on this slack - sign up for it! Its just so great, low key
-help and great learning opportunities to just dive through the topics. <a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+help and great learning opportunities to just dive through the topics. <a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
