@@ -11,9 +11,9 @@ Tags:
 menu: []
 ---
 
-My name is Catherine Blatter and I am trained as a registered nurse (RN). I work as a research assistant at the [Institute of Nursing Science](https://nursing.unibas.ch) (INS) at the University of Basel where I'm wrangling data for several projects.  I'm striving to write safe and reproducible code.  
+I work as a research assistant at the [Institute of Nursing Science](https://nursing.unibas.ch) at the University of Basel where I'm wrangling data for several projects.  I'm striving to write safe and reproducible code.  
 
-This website is mantained personally and does not necessarily represent my employer's views. 
+This website is maintained personally and does not necessarily represent my employer's views. 
 
 
 
