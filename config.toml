@@ -47,7 +47,7 @@ enableEmoji = true
 
 
 [params]
-    description = "RN, MSc | #rstats | likes bikes, data & the nordic outdoors 🇳🇴🇸🇪🇮🇸"
+    description = "RN, MSc | #rstats | cycling, data & the nordic outdoors 🇳🇴🇸🇪🇮🇸"
     EnableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
