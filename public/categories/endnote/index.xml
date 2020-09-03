@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Endnote on Catherine Blatter</title>
-    <link>/categories/endnote/</link>
+    <link>https://cathblatter.rbind.io/categories/endnote/</link>
     <description>Recent content in Endnote on Catherine Blatter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/endnote/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cathblatter.rbind.io/categories/endnote/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Useful hints for Endnote</title>
-      <link>/blog/2019/02/16/useful-hints/</link>
+      <link>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</link>
       <pubDate>Sat, 16 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2019/02/16/useful-hints/</guid>
+      <guid>https://cathblatter.rbind.io/blog/2019/02/16/useful-hints/</guid>
       <description>💡 A collection of hints for working with Endnote this is a working document primarily addressed at students from the Institute of Nursing Science at University of Basel and may change over time - feedback welcome
-What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers. This document lists the major problems I’ve seen and offers solutions that worked for me.</description>
+What is this document and why? Endnote is the citation manager proclaimed in many courses at the INS. Over the past years I’ve encountered a number of struggles personally or through my peers.</description>
     </item>
     
   </channel>

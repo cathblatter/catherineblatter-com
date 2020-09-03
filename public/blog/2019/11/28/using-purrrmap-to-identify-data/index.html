@@ -48,7 +48,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 
-		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="https://cathblatter.rbind.io/font-awesome/css/font-awesome.min.css" type="text/css">
 		<link rel="stylesheet" href="/css/poole.css">
 		<link rel="stylesheet" href="/css/syntax.css">
 		<link rel="stylesheet" href="/css/hyde.css">
@@ -59,14 +59,14 @@
 		<link rel="stylesheet" href="/css/custom.css">
 		
 		<link href="" rel="alternate" type="application/rss+xml" title="Catherine Blatter">
-		<link href="/blog/2019/11/28/using-purrrmap-to-identify-data" rel="canonical">
+		<link href="https://cathblatter.rbind.io/blog/2019/11/28/using-purrrmap-to-identify-data" rel="canonical">
 	</head>
 
 	<body class="base16-solarized-cath  h-entry">
 		<main class="content container" role="main">
 			<article class="post">
 				<header>
-					<a class="u-url" href="/blog/2019/11/28/using-purrrmap-to-identify-data">
+					<a class="u-url" href="https://cathblatter.rbind.io/blog/2019/11/28/using-purrrmap-to-identify-data">
 						<h1 class="post-title p-name">Using purrr::map() to identify data</h1>
 					</a>
 					<h3 class="post-author">Catherine Blatter</h3>
@@ -75,9 +75,10 @@
 				</header>
 				<main class="post-content e-content">
 					
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p><em>last edited: 2020-04-25</em></p>
+<p><em>last edited: 2020-09-03</em></p>
 <div id="what-happened" class="section level1">
 <h1>What happened?</h1>
 <p>Recently I wanted to explore plotting R for the first time and discovered the
@@ -95,8 +96,8 @@ d &lt;- shp_df[[&quot;g1b15&quot;]]
 
 # Look at the structure of the data frame
 glimpse(d)</code></pre>
-<pre><code>## Observations: 19,502
-## Variables: 21
+<pre><code>## Rows: 19,502
+## Columns: 21
 ## $ long    &lt;int&gt; 679207, 680062, 679981, 680365, 680281, 680479, 680717, 68102…
 ## $ lat     &lt;int&gt; 245176, 244294, 244051, 243411, 241866, 241584, 240695, 24030…
 ## $ order   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
@@ -250,7 +251,7 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
 <hr />
 <ol>
 <li id="fn1"><p>In the meantime, the package maintainer provided me with the working links:
-<a href="https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html" class="uri">https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html</a>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<a href="https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html" class="uri">https://www.bfs.admin.ch/bfs/fr/home/services/geostat/geodonnees-statistique-federale.html</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -282,14 +283,14 @@ ggplot(cant_level, aes(x = long, y = lat, group = group)) +
 			<div class="container sidebar-sticky">
 				<header class="sidebar-about h-card vcard p-author">
 					
-					<a class="u-url u-uid" rel="me" href="/">
-						<img class="u-photo" src="/images/catherine.png" width=128 height=128 />
+					<a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">
+						<img class="u-photo" src="https://cathblatter.rbind.io/images/catherine.png" width=128 height=128 />
 					</a>
 					
 
 					
 					<span class="site-title u-name fn">
-					  <a class="u-url u-uid" rel="me" href="/">Catherine Blatter</a>
+					  <a class="u-url u-uid" rel="me" href="https://cathblatter.rbind.io/">Catherine Blatter</a>
 				  </span>
 					
 
