@@ -1,0 +1,84 @@
+---
+title: Installing & using multiple R versions aside
+author: Catherine Blatter
+date: '2021-03-06'
+slug: installing-using-r-versions-aside
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+  - self-help
+  - environments
+menu: main
+---
+
+# Motivation
+
+- I started using the [{renv}](https://rstudio.github.io/renv/)-package about a 
+year ago and it has saved me multiple times already. What always baffled me though was
+the hint when opening an 'old' project where I used a previous version of R to 
+set it up - how would I be able to 'switch' back to an older version of R?  
+
+- I remembered Garrick Aiden-Buie mentioning [Rswitch](https://rud.is/rswitch/) in this [thread-post](https://www.garrickadenbuie.com/blog/setting-up-a-new-macbook-pro/). 
+
+- I recently took a Intro-to-Python-course and stumbled upon [{venv}](https://docs.python.org/3/tutorial/venv.html). 
+I was amazed to learn that in Python all previous versions stay available, so 
+I could easily choose the version for a new virtual environment `r emo::ji("bulb")`
+
+# How it started
+
+Thanks to google, I read numerous blog posts but did not understand much (not 
+a regular command-line-user)...
+
+- I gasped that using the .`pkg`-installer (double clicking through the GUI) will 
+remove the previous version (noted [here](https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Multiple-versions))  
+
+- I briefly played with the idea that instead I could unpack the `.tar.gz`-files 
+and build from source as noted [here](https://rud.is/rswitch/guide/) - while I was finally 
+able to run all steps (something alongside `./configure make ` etc) the version I installed was not placed in `~/Library/Frameworks/R.frameworks/` 
+but remained in `/usr/local/bin/R`  `r emo::ji("weary")` 
+Not confident about meddling too much there another round of google was on.  
+
+- I finally came across this answer on SO: https://stackoverflow.com/a/66155919 - 
+it is pointed out, that `pkgutil --forget` should not mention the name of the 
+file I downloaded (which I did...) but the name of the pkgs inside the thing I 
+downloaded - thanks for this very helpful clarification! With new hope I did this:    
+
+# How it's going
+
+1. Download the package installer from the official page, eg. https://stat.ethz.ch/CRAN/bin/macosx/ 
+
+2. Open the terminal and run the following line: 
+ 
+`pkgutil --pkgs | grep -i org.r-project | xargs -I {} sudo pkgutil --forget {}`  
+
+Entering `sudo`-mode I got prompted for the admin password.  
+
+3. Open the package installer and follow the GUI-prompts as usual  
+
+4. Check with RSwitch - the new (and the old versions) should be there `r emo::ji("party")`
+
+## Note
+
+I wrote this brief blogpost mainly for my future-self - having the steps outlined 
+explicitly will hopefully save me time in the future. It took me repeated google-sessions 
+in trying to understand the official R-docs and I was very grateful for the SO-answer - maybe 
+another person might profit from this post as well - if so consider letting me know e.g. by  [tweet](https://twitter.com/cathblatter). 
+
+`r emo::ji("warning")` A note of caution: I do not fully understand what is really happening with the commands 
+above under the hood and I cannot be held responsible for whatever happens on your 
+machine if you follow these steps.  
+They worked out on my computer(s) but for inquiries about what is really happening 
+in the background consider following the official docs or ask on Stackoverflow!  
+
+`r emo::ji("computer")` Apple Mac OS X High Sierra.  
+
+
+
+
+
+
+
+
+

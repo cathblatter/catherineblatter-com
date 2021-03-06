@@ -1,0 +1,75 @@
+---
+title: Installing & using multiple R versions aside
+author: Catherine Blatter
+date: '2021-03-06'
+slug: installing-using-r-versions-aside
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+  - self-help
+  - environments
+menu: main
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="motivation" class="section level1">
+<h1>Motivation</h1>
+<ul>
+<li><p>I started using the <a href="https://rstudio.github.io/renv/">{renv}</a>-package about a
+year ago and it has saved me multiple times already. What always baffled me though was
+the hint when opening an ‘old’ project where I used a previous version of R to
+set it up - how would I be able to ‘switch’ back to an older version of R?</p></li>
+<li><p>I remembered Garrick Aiden-Buie mentioning <a href="https://rud.is/rswitch/">Rswitch</a> in this <a href="https://www.garrickadenbuie.com/blog/setting-up-a-new-macbook-pro/">thread-post</a>.</p></li>
+<li><p>I recently took a Intro-to-Python-course and stumbled upon <a href="https://docs.python.org/3/tutorial/venv.html">{venv}</a>.
+I was amazed to learn that in Python all previous versions stay available, so
+I could easily choose the version for a new virtual environment 💡</p></li>
+</ul>
+</div>
+<div id="how-it-started" class="section level1">
+<h1>How it started</h1>
+<p>Thanks to google, I read numerous blog posts but did not understand much (not
+a regular command-line-user)…</p>
+<ul>
+<li><p>I gasped that using the .<code>pkg</code>-installer (double clicking through the GUI) will
+remove the previous version (noted <a href="https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Multiple-versions">here</a>)</p></li>
+<li><p>I briefly played with the idea that instead I could unpack the <code>.tar.gz</code>-files
+and build from source as noted <a href="https://rud.is/rswitch/guide/">here</a> - while I was finally
+able to run all steps (something alongside <code>./configure make</code> etc) the version I installed was not placed in <code>~/Library/Frameworks/R.frameworks/</code>
+but remained in <code>/usr/local/bin/R</code> 😩
+Not confident about meddling too much there another round of google was on.</p></li>
+<li><p>I finally came across this answer on SO: <a href="https://stackoverflow.com/a/66155919" class="uri">https://stackoverflow.com/a/66155919</a> -
+it is pointed out, that <code>pkgutil --forget</code> should not mention the name of the
+file I downloaded (which I did…) but the name of the pkgs inside the thing I
+downloaded - thanks for this very helpful clarification! With new hope I did this:</p></li>
+</ul>
+</div>
+<div id="how-its-going" class="section level1">
+<h1>How it’s going</h1>
+<ol style="list-style-type: decimal">
+<li><p>Download the package installer from the official page, eg. <a href="https://stat.ethz.ch/CRAN/bin/macosx/" class="uri">https://stat.ethz.ch/CRAN/bin/macosx/</a></p></li>
+<li><p>Open the terminal and run the following line:</p></li>
+</ol>
+<p><code>pkgutil --pkgs | grep -i org.r-project | xargs -I {} sudo pkgutil --forget {}</code></p>
+<p>Entering <code>sudo</code>-mode I got prompted for the admin password.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Open the package installer and follow the GUI-prompts as usual</p></li>
+<li><p>Check with RSwitch - the new (and the old versions) should be there 🎂</p></li>
+</ol>
+<div id="note" class="section level2">
+<h2>Note</h2>
+<p>I wrote this brief blogpost mainly for my future-self - having the steps outlined
+explicitly will hopefully save me time in the future. It took me repeated google-sessions
+in trying to understand the official R-docs and I was very grateful for the SO-answer - maybe
+another person might profit from this post as well - if so consider letting me know e.g. by <a href="https://twitter.com/cathblatter">tweet</a>.</p>
+<p>⚠️ A note of caution: I do not fully understand what is really happening with the commands
+above under the hood and I cannot be held responsible for whatever happens on your
+machine if you follow these steps.<br />
+They worked out on my computer(s) but for inquiries about what is really happening
+in the background consider following the official docs or ask on Stackoverflow!</p>
+<p>💻 Apple Mac OS X High Sierra.</p>
+</div>
+</div>
