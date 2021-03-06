@@ -10,7 +10,7 @@ Description: ''
 Tags:
   - self-help
   - environments
-menu: main
+menu: []
 ---
 
 # Motivation
