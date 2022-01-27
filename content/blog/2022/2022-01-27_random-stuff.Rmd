@@ -12,7 +12,7 @@ Tags:
 menu: []
 ---
 
-# Motivation
+## Motivation
 
 This post should really just be a random list of things that R can do but I 
 often forget about....
@@ -40,4 +40,3 @@ system("cal 2021")
 ```
 
 further reading and more elaborate stuff: https://www.garrickadenbuie.com/blog/r-console-calendar/ 
-
