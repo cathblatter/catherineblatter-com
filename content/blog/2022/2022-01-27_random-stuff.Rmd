@@ -20,6 +20,10 @@ often forget about....
 
 ## Print calendar in R console
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 ```{r, echo = FALSE}
 # spoiler : code copied from @grrrick at 
 # https://github.com/gadenbuie/garrickadenbuie-com/blob/main/content/blog/2020/2020-09-21-a-calendar-in-your-r-console.Rmarkdown
@@ -39,4 +43,20 @@ Because, why not? `r emo::ji("sunglasses")` It even goes for a whole year:
 system("cal 2021")
 ```
 
+<<<<<<< HEAD
 further reading and more elaborate stuff: https://www.garrickadenbuie.com/blog/r-console-calendar/ 
+=======
+further reading and more elaborate stuff: https://www.garrickadenbuie.com/blog/r-console-calendar/ 
+=======
+```{r, eval = T, echo = T}
+system('cal')
+```
+
+
+Because, why not? `r emo::ji("sunglasses")`
+
+
+
+>>>>>>> main
+
+>>>>>>> main
