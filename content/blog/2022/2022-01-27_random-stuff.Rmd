@@ -1,0 +1,43 @@
+---
+title: A (ever growing list) of random things in R
+author: Catherine Blatter
+date: '2022-01-27'
+slug: random-things-in-R
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+    - future-self
+menu: []
+---
+
+# Motivation
+
+This post should really just be a random list of things that R can do but I 
+often forget about....
+
+
+## Print calendar in R console
+
+```{r, echo = FALSE}
+# spoiler : code copied from @grrrick at 
+# https://github.com/gadenbuie/garrickadenbuie-com/blob/main/content/blog/2020/2020-09-21-a-calendar-in-your-r-console.Rmarkdown
+system <- function(...) {
+  x <- base::system(..., intern = TRUE)
+  cat(gsub("_\b", "", x), sep = "\n")
+}
+```
+
+```{r echo=TRUE, comment=""}
+system("cal")
+```
+
+Because, why not? `r emo::ji("sunglasses")` It even goes for a whole year:  
+
+```{r echo=TRUE, comment=""}
+system("cal 2021")
+```
+
+further reading and more elaborate stuff: https://www.garrickadenbuie.com/blog/r-console-calendar/ 
+
