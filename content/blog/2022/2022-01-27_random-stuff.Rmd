@@ -1,5 +1,5 @@
 ---
-title: A (ever growing list) of random things in R
+title: An (ever growing) list of random things in R
 author: Catherine Blatter
 date: '2022-01-27'
 slug: random-things-in-R

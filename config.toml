@@ -1,5 +1,5 @@
 title = "Catherine Blatter"
-baseurl = "https://cathblatter.rbind.io/"
+baseurl = "https://cathblatter.netlify.app/"
 relativeurls = false
 languageCode = "en-us"
 theme = "hyde"
@@ -47,7 +47,7 @@ enableEmoji = true
 
 
 [params]
-    description = " #rstats for research | coding, sports, data & the nordic outdoors 🇳🇴🇸🇪🇮🇸"
+    description = " #rstats for research | sports, data & outdoors 🇳🇴🇸🇪🇮🇸🏴"
     EnableEmoji = true
     contactHeader = "Links"
     n_posts_front = 5
