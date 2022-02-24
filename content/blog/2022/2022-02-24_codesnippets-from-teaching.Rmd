@@ -1,0 +1,117 @@
+---
+title: Codesnippets from teaching
+author: Catherine Blatter
+date: '2022-02-24'
+slug: codesnippets-teaching
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+    - teaching
+menu: []
+toc: true
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+*Every once in a while I create small code snippets demonstrating something in R. 
+Up to today, there was no place for this to live, so here it is...*
+
+
+# Renaming columns - {dplyr} and {base} example
+
+**Loading the necessary library**
+
+```{r}
+library(dplyr, warn.conflicts = F) # A Grammar of Data Manipulation, CRAN v1.0.8 
+
+```
+
+**Sample dataframe**
+
+Creating a sample dataframe: the function `tribble()` lets you construct 
+rowwise-tibbles (thus the R in `tribble()`). This is closer to the idea of 
+data in a spreadsheet than the mirrored version with `tibble()` or `data.frame()`. 
+
+```{r}
+df <- tibble::tribble(
+  ~id, ~pesnwi_leadership, ~pesnwi_sra, ~bernca_adl, ~bernca_docu,
+  1, 2.3, 2.1, 1.8, 1.4,
+  2, 2.0, 3, 2.1, 0.9,
+  3, 3.1, 3.5, 3.9, 3
+)
+```
+
+This is the equivalent code for the 'mirrored' version: 
+
+```{r, eval=FALSE}
+df <- 
+  data.frame(
+                   id = c(1, 2, 3),
+    pesnwi_leadership = c(2.3, 2, 3.1),
+           pesnwi_sra = c(2.1, 3, 3.5),
+           bernca_adl = c(1.8, 2.1, 3.9),
+          bernca_docu = c(1.4, 0.9, 3)
+  )
+```
+
+Finally, this is how the dataframe looks like: 
+
+```{r}
+df
+```
+
+
+**Manual renaming with `dplyr::rename()`**
+
+Manual renaming following the idea of newname = oldname.
+This is the approach you need to take for manual replacement of 
+column-names (see an equivalent base-R code below). You can rename more than
+three variables like this, just add further combinations of newname = oldname...
+
+```{r}
+df %>%
+  rename(
+    pesnwi_ls = pesnwi_leadership,
+    ration_adl = bernca_adl,
+    ration_docu = bernca_docu
+  )
+```
+
+**Manual renaming with `base-R`**
+
+Of course its also possible to rename the columns with other approaches, e.g. : 
+```{r, eval=F}
+names(df)[names(df)=="pesnwi_leadership"] <- "pesnwi_ls"
+```
+
+**Automatic renaming with `dplyr::rename_with()`**
+
+It's possible to rename multiple column-names based on matching text-patterns 
+(regular expression). This is great if you need to rename multiple variables with
+the same pattern, but it only works if you can find such a pattern. If you're in 
+doubt which option to choose its probably safer to do the manual method above...
+
+For the example dataframe, say we want to replace the prefix "bernca" (the name of 
+an instrument to measure rationed nursing care^[Schubert et al., 2007, https://doi.org/10.1097/01.nnr.0000299853.52429.62]) 
+by the more general term "ration". This is possible with the following code: 
+
+```{r}
+df %>%
+  rename_with(
+    .fn = ~ stringr::str_replace(., pattern = "bernca", replacement = "ration"),
+    .cols = everything()
+  )
+```
+
+By default, all columns get considered, but we could limit this or manually 
+define the columns with `c(bernca_adl, bernca_docu)`. 
+
+### TL;DR - code please
+
+```{embed file="2022-02-24_rename-cols.R"}
+
+```
+
