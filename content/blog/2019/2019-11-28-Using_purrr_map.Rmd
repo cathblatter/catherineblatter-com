@@ -1,5 +1,5 @@
 ---
-title: 'Using purrr::map() to identify data'
+title: 'Using purrr::map() with {ggplot2} to identify datasets in a list'
 author: Catherine Blatter
 date: '2019-11-28'
 slug: using-purrr::map()-to-identify-data
@@ -13,7 +13,6 @@ Tags:
   - Hints
 menu: ''
 ---
- *last edited: `r lubridate::today()`*
 
 # What happened? 
 

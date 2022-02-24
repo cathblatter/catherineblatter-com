@@ -19,6 +19,7 @@ output:
 *Every once in a while I create small code snippets demonstrating something in R. 
 Up to today, there was no place for this to live, so here it is...*
 
+<span style="color:#153d6b;">*last modified on: `r lubridate::today()`*</span>
 
 # Renaming columns - {dplyr} and {base} example
 
