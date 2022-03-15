@@ -14,7 +14,11 @@ menu: []
 
 - 2022-03-15: Setting up isolated project-libraries using {`renv`}.  
   `r emo::ji("movie_camera")` https://rrtm-renv.netlify.app/  
-  `r icons::octicons("code")`: following soon
+  `r icons::octicons("code")`: *following soon*  
+  
+- 2021-10-05: Open science - overview of aspects, challenges & benefits.  
+  `r emo::ji("movie_camera")` https://rrtm-openscience.netlify.app/  
+  `r icons::octicons("code")`: *following soon*  
   
 
 
