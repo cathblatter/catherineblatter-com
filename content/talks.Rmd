@@ -1,0 +1,26 @@
+---
+title: "Talks"
+slug: talks
+type: page
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+menu: []
+---
+
+## Research flash talks at RRTM^[Research roundtable meetings @ Institue of Nursing Science, Basel]
+
+- 2022-03-15: Setting up isolated project-libraries using {`renv`}.  
+  `r emo::ji("movie_camera")` https://rrtm-renv.netlify.app/  
+  `r icons::octicons("code")`: following soon
+  
+
+
+
+
+ 
+ 
+
+
