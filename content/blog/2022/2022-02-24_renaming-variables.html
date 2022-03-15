@@ -1,0 +1,430 @@
+---
+title: Different approaches to rename variables 
+author: Catherine Blatter
+date: '2022-02-24'
+slug: renaming-variables
+categories: []
+tags: []
+Categories:
+Description: ''
+Tags:
+    - teaching
+menu: []
+toc: true
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#renaming-selected-columns">Renaming selected columns</a>
+<ul>
+<li><a href="#manual-renaming-with-dplyrrename">Manual renaming with <code>dplyr::rename()</code></a></li>
+<li><a href="#manual-renaming-with-base-r">Manual renaming with <code>base-R</code></a></li>
+</ul></li>
+<li><a href="#renaming-multiple-columns-at-once">Renaming multiple columns at once</a>
+<ul>
+<li><a href="#renaming-based-on-text-patterns-with-dplyrrename_with">Renaming based on text-patterns with <code>dplyr::rename_with()</code></a></li>
+</ul></li>
+<li><a href="#renaming-based-on-names-defined-in-an-external-document-e.g.-xlsx">Renaming based on names defined in an external document (e.g. xlsx)</a>
+<ul>
+<li><a href="#creating-sample-datasets">Creating sample datasets</a></li>
+<li><a href="#using-a-named-vector-to-rename-dataframes">Using a named vector to rename dataframes</a></li>
+<li><a href="#using-functional-programming-to-rename-all-dataframes-at-once">Using functional programming to rename all dataframes at once</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p><span style="color:#153d6b;"><em>last modified on: 2022-03-15</em></span></p>
+<p><em>This started out as a post about small code snippets, however it grew into an
+self-standing post on different ways how to rename variables in dataframe. It contains
+the very basic options for renaming only selected columns up to more advanced
+situations where the information on how to rename variables is derived from an
+external document.</em></p>
+<div id="renaming-selected-columns" class="section level1">
+<h1>Renaming selected columns</h1>
+<p><strong>Loading the necessary package</strong></p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p><strong>Sample dataframe</strong></p>
+<p>Creating a sample dataframe: the function <code>tribble()</code> lets you construct
+rowwise-tibbles (thus the R in <code>tribble()</code>). This is closer to the idea of
+data in a spreadsheet than the mirrored version with <code>tibble()</code> or <code>data.frame()</code>.</p>
+<pre class="r"><code>df &lt;- tibble::tribble(
+  ~id, ~pesnwi_leadership, ~pesnwi_sra, ~bernca_adl, ~bernca_docu,
+  1, 2.3, 2.1, 1.8, 1.4,
+  2, 2.0, 3, 2.1, 0.9,
+  3, 3.1, 3.5, 3.9, 3
+)</code></pre>
+<p>This is the equivalent code for the ‘mirrored’ version:</p>
+<pre class="r"><code>df &lt;- 
+  data.frame(
+                   id = c(1, 2, 3),
+    pesnwi_leadership = c(2.3, 2, 3.1),
+           pesnwi_sra = c(2.1, 3, 3.5),
+           bernca_adl = c(1.8, 2.1, 3.9),
+          bernca_docu = c(1.4, 0.9, 3)
+  )</code></pre>
+<p>Finally, this is how the dataframe looks like:</p>
+<pre class="r"><code>df</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##      id pesnwi_leadership pesnwi_sra bernca_adl bernca_docu
+##   &lt;dbl&gt;             &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+## 1     1               2.3        2.1        1.8         1.4
+## 2     2               2          3          2.1         0.9
+## 3     3               3.1        3.5        3.9         3</code></pre>
+<div id="manual-renaming-with-dplyrrename" class="section level3">
+<h3>Manual renaming with <code>dplyr::rename()</code></h3>
+<p>Manual renaming following the idea of newname = oldname.
+This is the approach you need to take for manual replacement of
+column-names (see an equivalent base-R code below). You can rename more than
+three variables like this, just add further combinations of newname = oldname…</p>
+<pre class="r"><code>df %&gt;%
+  rename(
+    pesnwi_ls = pesnwi_leadership,
+    ration_adl = bernca_adl,
+    ration_docu = bernca_docu
+  )</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##      id pesnwi_ls pesnwi_sra ration_adl ration_docu
+##   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+## 1     1       2.3        2.1        1.8         1.4
+## 2     2       2          3          2.1         0.9
+## 3     3       3.1        3.5        3.9         3</code></pre>
+</div>
+<div id="manual-renaming-with-base-r" class="section level3">
+<h3>Manual renaming with <code>base-R</code></h3>
+<p>Of course its also possible to rename the columns with other approaches, e.g. :</p>
+<pre class="r"><code>names(df)[names(df)==&quot;pesnwi_leadership&quot;] &lt;- &quot;pesnwi_ls&quot;</code></pre>
+</div>
+</div>
+<div id="renaming-multiple-columns-at-once" class="section level1">
+<h1>Renaming multiple columns at once</h1>
+<div id="renaming-based-on-text-patterns-with-dplyrrename_with" class="section level2">
+<h2>Renaming based on text-patterns with <code>dplyr::rename_with()</code></h2>
+<p>It’s possible to rename multiple column-names based on matching text-patterns
+(regular expression). This is great if you need to rename multiple variables with
+the same pattern, but it only works if you can find such a pattern. If you’re in
+doubt which option to choose its probably safer to do the manual method above…</p>
+<p>For the example dataframe, say we want to replace the prefix “bernca” (the name of
+an instrument to measure rationed nursing care<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>)
+by the more general term “ration”. This is possible with the following code:</p>
+<pre class="r"><code>df %&gt;%
+  rename_with(
+    .fn = ~ stringr::str_replace(., pattern = &quot;bernca&quot;, replacement = &quot;ration&quot;),
+    .cols = everything()
+  )</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##      id pesnwi_leadership pesnwi_sra ration_adl ration_docu
+##   &lt;dbl&gt;             &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+## 1     1               2.3        2.1        1.8         1.4
+## 2     2               2          3          2.1         0.9
+## 3     3               3.1        3.5        3.9         3</code></pre>
+<p>By default, all columns get considered, but we could limit this or manually
+define the columns with <code>c(bernca_adl, bernca_docu)</code>. Note that I used the {stringr} package
+for replacing the pattern ‘bernca’ with ‘ration’.</p>
+</div>
+</div>
+<div id="renaming-based-on-names-defined-in-an-external-document-e.g.-xlsx" class="section level1">
+<h1>Renaming based on names defined in an external document (e.g. xlsx)</h1>
+<p>Imagine the following situation: a survey study with three timepoints was conducted
+over a timespan of 2 years: T0 as baseline, T1 = T0+12months and T2 = T0+24months.<br />
+Some of the questions were only asked at baseline, some across all timepoints and
+selected variables only in T1 and T2. For several reasons (a.k.a. real-life data collection)
+this led to situations, where a variable named X12 in T0, did in fact not correspond to the variable named X12 in T1 and so on.</p>
+<p>In total there were &gt; 250 variables to rename and the person defining the new variables did not work with R. Thus, the solution was to store the information in an external spreadsheet and then write code to import this spreadsheet and rename based on it. But how?</p>
+<p>A spreadsheet was created in excel that essentially
+held information on the variable names of a specific questions across all time points.
+Additionally, the first column ‘global’ defines the new variable name that will be used across all
+datasets once the renaming took place. Below is a small example of how the excel-file
+looked like:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+global
+</th>
+<th style="text-align:left;">
+T0
+</th>
+<th style="text-align:left;">
+T1
+</th>
+<th style="text-align:left;">
+T2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:left;">
+ID
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X1
+</td>
+<td style="text-align:left;">
+X1
+</td>
+<td style="text-align:left;">
+X3
+</td>
+<td style="text-align:left;">
+X2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X2
+</td>
+<td style="text-align:left;">
+X4
+</td>
+<td style="text-align:left;">
+X10
+</td>
+<td style="text-align:left;">
+X11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X3
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+X2
+</td>
+<td style="text-align:left;">
+X12
+</td>
+</tr>
+</tbody>
+</table>
+<div id="creating-sample-datasets" class="section level3">
+<h3>Creating sample datasets</h3>
+<p>Below I created some sample datasets to mimic T0, T1 and T2 and the information
+from the spreadsheet:</p>
+<p><strong>For the data from the surveys T0, T1, T2</strong></p>
+<pre class="r"><code>orig_t0 &lt;- tibble::tribble(
+  ~ID, ~X1, ~X4,
+  &quot;A&quot;, &quot;m&quot;, 1,
+  &quot;B&quot;, &quot;x&quot;, 2
+)
+
+orig_t1 &lt;-  tibble::tribble(
+  ~ID, ~X3, ~X10, ~X2,
+  &quot;AAA&quot;, &quot;f&quot;, 1, 44,
+  &quot;BBB&quot;, &quot;x&quot;, 2, 56,
+)
+
+orig_t2 &lt;-  tibble::tribble(
+  ~ID, ~X2, ~X11, ~X12,
+  &quot;FFF&quot;, &quot;f&quot;, 2, 53,
+  &quot;BGG&quot;, &quot;f&quot;, 1, 23,
+)</code></pre>
+<p><strong>Information from the spreadsheet</strong></p>
+<pre class="r"><code>name_tbl &lt;- tibble::tribble(
+  ~global, ~T0, ~T1, ~T2,
+  &quot;ID&quot;, &quot;ID&quot;, &quot;ID&quot;, &quot;ID&quot;,
+  &quot;X1&quot;, &quot;X1&quot;, &quot;X3&quot;, &quot;X2&quot;,
+  &quot;X2&quot;, &quot;X4&quot;, &quot;X10&quot;, &quot;X11&quot;,
+  &quot;X3&quot;, NA_character_, &quot;X2&quot;, &quot;X12&quot;
+)</code></pre>
+</div>
+<div id="using-a-named-vector-to-rename-dataframes" class="section level3">
+<h3>Using a named vector to rename dataframes</h3>
+<p>As noted above <code>rename()</code> takes its inputs following the usual tidyverse-style,
+meaning <code>rename(newname = oldname)</code>. This can be translated to the situation at
+hand by using the corresponding columns from the spreadsheet to create a named
+vector that has the information newname as ‘name’ and oldname as value. <code>tibble::deframe()</code>
+is suitable for this situation as described in the help-page:
+&gt; deframe() converts two-column data frames to a named vector or list, using the first column as name and the second column as value.</p>
+<p><strong>For T0</strong></p>
+<pre class="r"><code># create a named vector
+helper_rename_t0 &lt;- name_tbl %&gt;%
+  select(global, T0) %&gt;% # take the two variables needed
+  drop_na() %&gt;% # drop_na() is important here 
+  deframe() # deframe creates the named vector
+
+# rename with !!! 
+(global_t0 &lt;- 
+  orig_t0 %&gt;%
+    rename(!!!helper_rename_t0))</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   ID    X1       X2
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1 A     m         1
+## 2 B     x         2</code></pre>
+<p><strong>For T1</strong></p>
+<pre class="r"><code># create a named vector
+helper_rename_t1 &lt;- name_tbl %&gt;%
+  select(global, T1) %&gt;% # take the two variables needed
+  drop_na() %&gt;% # drop_na() is important here 
+  deframe() # deframe creates the named vector
+
+# rename with !!! 
+(global_t1 &lt;- 
+  orig_t1 %&gt;%
+    rename(!!!helper_rename_t1))</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   ID    X1       X2    X3
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 AAA   f         1    44
+## 2 BBB   x         2    56</code></pre>
+<p><strong>For T2</strong></p>
+<pre class="r"><code># create a named vector
+helper_rename_t2 &lt;- name_tbl %&gt;%
+  select(global, T2) %&gt;% # take the two variables needed
+  drop_na() %&gt;% # drop_na() is important here 
+  deframe() # deframe creates the named vector
+
+# rename with !!! 
+(global_t2 &lt;- 
+  orig_t2 %&gt;%
+    rename(!!!helper_rename_t2))</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   ID    X1       X2    X3
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 FFF   f         2    53
+## 2 BGG   f         1    23</code></pre>
+<p><strong>Finally, using <code>bind_rows()</code> to combine all datasets</strong></p>
+<pre class="r"><code>(version1 &lt;- bind_rows(global_t0, global_t1, global_t2))</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   ID    X1       X2    X3
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A     m         1    NA
+## 2 B     x         2    NA
+## 3 AAA   f         1    44
+## 4 BBB   x         2    56
+## 5 FFF   f         2    53
+## 6 BGG   f         1    23</code></pre>
+<p>This approach worked very well, however some elements are repeated for every dataset
+(creating the helper vector, renaming), thus maybe a more functional programming
+approach might be suitable.</p>
+</div>
+<div id="using-functional-programming-to-rename-all-dataframes-at-once" class="section level3">
+<h3>Using functional programming to rename all dataframes at once</h3>
+<p>The approach above works very well, yet sometimes its nice to have the output
+checked to the original content as well (see if the renaming was really correct).</p>
+<p>The code presented here war written with help from the R4DS-online community,
+specifically <a href="https://github.com/TylerGrantSmith%5D">Tyler Smith</a> for the first option and
+<a href="https://twitter.com/jonthegeek"><span class="citation">@jonthegeek</span></a> for the 2nd one.</p>
+<p><strong>First option</strong></p>
+<pre class="r"><code># create a long df with matching variable names
+var_names &lt;- 
+  name_tbl %&gt;% 
+  rename(to = global) %&gt;% 
+  pivot_longer(-to, names_to = &quot;source&quot;, values_to = &quot;from&quot;) %&gt;% 
+  select(source, from, to) %&gt;% 
+  drop_na()
+
+
+# helper function to rename the cols
+rename_cols &lt;- function(.data, from, to) {
+  dplyr::rename(.data, 
+                !!!rlang::syms(
+                  purrr::discard(
+                    rlang::set_names(from, to), is.na(from))))
+}
+
+
+# helper function to table the cols
+# to compare their content
+table_cols &lt;- function(.data, cols, ...) {
+  purrr::map(cols, ~ base::table(.data[[.x]]), ...)
+}
+
+
+# creating a list of all dataframes that need to be renamed
+data_list &lt;- list(
+  T0 = orig_t0,
+  T1 = orig_t1,
+  T2 = orig_t2
+)
+
+# Create a nested tibble, define the variables to 
+# be rename for each row, apply the renaming, finbally validate the
+# data_table (original dataframe) versus the output_table (renamed dataframe)
+
+mapped_object &lt;- 
+  enframe(data_list, name = &quot;source&quot;, value = &quot;data&quot;) %&gt;%
+  mutate(mapping = map(source, ~ filter(var_names, source == .))) %&gt;%
+  hoist(mapping, from = &quot;from&quot;, to = &quot;to&quot;) %&gt;%
+  mutate(
+    output = pmap(list(data, from, to), rename_cols), # renaming
+    data_table = map2(data, from, table_cols, useNA = &quot;always&quot;), # validation
+    output_table = map2(output, to, table_cols, useNA = &quot;always&quot;), # validation
+    validate = map2_lgl(data_table, output_table, identical) # validation
+  )
+
+
+# from the mapped_pbject, 
+# unnest the output - don&#39;t forget to store it into its own object
+mapped_object %&gt;% 
+  select(output) %&gt;% 
+  unnest(cols = output)</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   ID    X1       X2    X3
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A     m         1    NA
+## 2 B     x         2    NA
+## 3 AAA   f         1    44
+## 4 BBB   x         2    56
+## 5 FFF   f         2    53
+## 6 BGG   f         1    23</code></pre>
+<p>** Second option**</p>
+<p>The approach is very similar: use <code>purrr::map2_dfr()</code> to indicate the use
+of two lists (.x and .y) whereas .x is the list of the dataframes and .y is the
+list of the vectors with the names. The suffix <code>_dfr()</code> does <code>bind_rows()</code> to
+combine the results into one dataframe</p>
+<pre class="r"><code># rename 
+map2_dfr(
+  list(orig_t0, orig_t1, orig_t2),
+  list(name_tbl$T0, name_tbl$T1, name_tbl$T2), function(tdf, names) {
+    real_names &lt;- name_tbl$global[!is.na(names)]
+    names &lt;- keep(names, function(v) !is.na(v))
+    tdf %&gt;%
+      rename(!!!rlang::syms(set_names(names, real_names)))
+  }
+)</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##   ID    X1       X2    X3
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A     m         1    NA
+## 2 B     x         2    NA
+## 3 AAA   f         1    44
+## 4 BBB   x         2    56
+## 5 FFF   f         2    53
+## 6 BGG   f         1    23</code></pre>
+</div>
+<div id="tldr" class="section level3">
+<h3>TL;DR</h3>
+<ul>
+<li><p>There are many different options on to how to rename a variable</p></li>
+<li><p>This post should give an overview of some of the possibilities I have worked with</p></li>
+<li><p>IMHO the best solution depends on the situation at hand - choose your pick!</p></li>
+</ul>
+</div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Schubert et al., 2007, <a href="https://doi.org/10.1097/01.nnr.0000299853.52429.62" class="uri">https://doi.org/10.1097/01.nnr.0000299853.52429.62</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
