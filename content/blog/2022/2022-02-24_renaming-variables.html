@@ -39,7 +39,7 @@ output:
 </ul>
 </div>
 
-<p><span style="color:#153d6b;"><em>last modified on: 2022-03-15</em></span></p>
+<p><span style="color:#153d6b;"><em>last modified on: 2022-03-16</em></span></p>
 <p><em>This started out as a post about small code snippets, however it grew into an
 self-standing post on different ways how to rename variables in dataframe. It contains
 the very basic options for renaming only selected columns up to more advanced
@@ -249,6 +249,7 @@ orig_t2 &lt;-  tibble::tribble(
 </div>
 <div id="using-a-named-vector-to-rename-dataframes" class="section level3">
 <h3>Using a named vector to rename dataframes</h3>
+<p><em>check also this tweet by <span class="citation">@PipingHotData</span>: <a href="https://twitter.com/PipingHotData/status/1497014703473704965?s=20&amp;t=TA5bW8K-wxczoaW2Q6UWCQ" class="uri">https://twitter.com/PipingHotData/status/1497014703473704965?s=20&amp;t=TA5bW8K-wxczoaW2Q6UWCQ</a></em></p>
 <p>As noted above <code>rename()</code> takes its inputs following the usual tidyverse-style,
 meaning <code>rename(newname = oldname)</code>. This can be translated to the situation at
 hand by using the corresponding columns from the spreadsheet to create a named
@@ -388,7 +389,7 @@ mapped_object %&gt;%
 ## 4 BBB   x         2    56
 ## 5 FFF   f         2    53
 ## 6 BGG   f         1    23</code></pre>
-<p>** Second option**</p>
+<p><strong>Second option</strong></p>
 <p>The approach is very similar: use <code>purrr::map2_dfr()</code> to indicate the use
 of two lists (.x and .y) whereas .x is the list of the dataframes and .y is the
 list of the vectors with the names. The suffix <code>_dfr()</code> does <code>bind_rows()</code> to

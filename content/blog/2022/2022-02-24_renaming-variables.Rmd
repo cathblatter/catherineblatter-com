@@ -198,6 +198,8 @@ name_tbl <- tibble::tribble(
 
 ### Using a named vector to rename dataframes
 
+*check also this tweet by @PipingHotData: https://twitter.com/PipingHotData/status/1497014703473704965?s=20&t=TA5bW8K-wxczoaW2Q6UWCQ*
+
 As noted above `rename()` takes its inputs following the usual tidyverse-style, 
 meaning `rename(newname = oldname)`. This can be translated to the situation at 
 hand by using the corresponding columns from the spreadsheet to create a named 
@@ -329,7 +331,7 @@ mapped_object %>%
 
 ```
 
-** Second option**
+**Second option**
 
 The approach is very similar: use `purrr::map2_dfr()` to indicate the use 
 of two lists (.x and .y) whereas .x is the list of the dataframes and .y is the 
