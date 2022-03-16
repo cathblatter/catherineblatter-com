@@ -10,17 +10,21 @@ Tags:
 menu: []
 ---
 
-## Research flash talks at RRTM^[Research roundtable meetings @ Institue of Nursing Science, Basel]
+
+
+### Research flash talks at RRTM^[Research roundtable meetings for PhD students, Institue of Nursing Science, Basel]
 
 - 2022-03-15: Setting up isolated project-libraries using {`renv`}.  
-  `r emo::ji("movie_camera")` https://rrtm-renv.netlify.app/  
-  `r icons::octicons("code")`: *following soon*  
+  `r emo::ji("movie_camera")` https://rrtm-renv.netlify.app/   
+  *Comment*: This talk contains a simplified explanation of {`renv`} to match the 
+  non-technical background of the audience. For detailed explanation, watch Kevin 
+  Ushey's talk at rstudio::conf(2020): https://github.com/kevinushey/2020-rstudio-conf 
   
 - 2021-10-05: Open science - overview of aspects, challenges & benefits.  
-  `r emo::ji("movie_camera")` https://rrtm-openscience.netlify.app/  
-  `r icons::octicons("code")`: *following soon*  
-  
+  `r emo::ji("movie_camera")` https://rrtm-openscience.netlify.app/   
+   
 
+*Note.* Slides prepared with {xaringan}, {xaringanthemer}, {xaringanExtra}. 
 
 
 
