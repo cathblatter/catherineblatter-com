@@ -11,7 +11,11 @@ Tags:
 menu: []
 ---
 
-I work as a research assistant at the [Institute of Nursing Science](https://nursing.unibas.ch) at the University of Basel where I'm wrangling data for several projects.  I'm striving to write safe and reproducible code.  
+I'm a registered-nurse-turned-data-lover who works as a PhD student and 
+research assistant at the Institute of Nursing Science
+at the University of Basel, Switzerland. I like to build and hack code 
+to make research faster, safer and more reproducible - and to generate meaningful 
+outputs (not just for publications) but for the clinical setting.  
 
 This website is maintained personally and does not necessarily represent my employer's views. 
 
