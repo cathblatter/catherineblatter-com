@@ -11,9 +11,7 @@ Tags:
 menu: []
 ---
 
-I'm a registered-nurse-turned-data-lover working as a PhD student and 
-research assistant at the Institute of Nursing Science
-at the University of Basel, Switzerland. I like to build and hack code 
+I'm a registered-nurse-turned-data-lover working at a Swiss university. I like to build and hack code 
 to make research faster, less ambiguous, more reproducible and to
 generate meaningful data insights and outputs for use in clinical settings.  
 
